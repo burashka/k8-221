@@ -1,0 +1,1548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="24" zv="Cache for Windows (x86-32) 2010.1.4 (Build 803)" ts="2011-03-13 00:35:56">
+<Class name="Authorization.DictRoles">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48231.931129</TimeChanged>
+<TimeCreated>62158,45218.078182</TimeCreated>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Type">
+<Type>%String</Type>
+</Property>
+
+<Property name="Users">
+<Type>Authorization.Properties</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Role</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Authorization.DictRolesD</DataLocation>
+<DefaultData>DictRolesDefaultData</DefaultData>
+<IdLocation>^Authorization.DictRolesD</IdLocation>
+<IndexLocation>^Authorization.DictRolesI</IndexLocation>
+<StreamLocation>^Authorization.DictRolesS</StreamLocation>
+<Data name="DictRolesDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>Type</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Authorization.Properties">
+<Super>%Persistent</Super>
+<TimeChanged>62158,48233.733584</TimeChanged>
+<TimeCreated>62158,43814.331962</TimeCreated>
+
+<Property name="User">
+<Type>Authorization.User</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Roles</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="UserIndex">
+<Properties>User</Properties>
+</Index>
+
+<Property name="Role">
+<Type>Authorization.DictRoles</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Users</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="RoleIndex">
+<Properties>Role</Properties>
+</Index>
+
+<Property name="Value">
+<Type>%Boolean</Type>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Authorization.PropertiesD</DataLocation>
+<DefaultData>PropertiesDefaultData</DefaultData>
+<IdLocation>^Authorization.PropertiesD</IdLocation>
+<IndexLocation>^Authorization.PropertiesI</IndexLocation>
+<StreamLocation>^Authorization.PropertiesS</StreamLocation>
+<Data name="PropertiesDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>User</Value>
+</Value>
+<Value name="3">
+<Value>Role</Value>
+</Value>
+<Value name="4">
+<Value>Value</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Authorization.User">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48230.053931</TimeChanged>
+<TimeCreated>62158,44535.354017</TimeCreated>
+
+<Property name="Login">
+<Type>%String</Type>
+</Property>
+
+<Property name="Password">
+<Type>%String</Type>
+</Property>
+
+<Property name="Roles">
+<Type>Authorization.Properties</Type>
+<Cardinality>many</Cardinality>
+<Inverse>User</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Person">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Person">
+<Properties>Person</Properties>
+<ReferencedClass>Institute.Person</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Authorization.UserD</DataLocation>
+<DefaultData>UserDefaultData</DefaultData>
+<IdLocation>^Authorization.UserD</IdLocation>
+<IndexLocation>^Authorization.UserI</IndexLocation>
+<StreamLocation>^Authorization.UserS</StreamLocation>
+<Data name="UserDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Login</Value>
+</Value>
+<Value name="3">
+<Value>Password</Value>
+</Value>
+<Value name="4">
+<Value>Person</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Documents.Contragents">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48246.821441</TimeChanged>
+<TimeCreated>62158,44950.096598</TimeCreated>
+
+<Property name="DateOfSigning">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="EndDateOfSigning">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Document">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Document">
+<Properties>Document</Properties>
+<ReferencedClass>Documents.Document</ReferencedClass>
+</ForeignKey>
+
+<Property name="Person">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Person">
+<Properties>Person</Properties>
+<ReferencedClass>Institute.Person</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Documents.ContragentsD</DataLocation>
+<DefaultData>ContragentsDefaultData</DefaultData>
+<IdLocation>^Documents.ContragentsD</IdLocation>
+<IndexLocation>^Documents.ContragentsI</IndexLocation>
+<StreamLocation>^Documents.ContragentsS</StreamLocation>
+<Data name="ContragentsDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>DateOfSigning</Value>
+</Value>
+<Value name="3">
+<Value>EndDateOfSigning</Value>
+</Value>
+<Value name="4">
+<Value>Person</Value>
+</Value>
+<Value name="5">
+<Value>Document</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Documents.Document">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48240.667769</TimeChanged>
+<TimeCreated>62158,44327.220252</TimeCreated>
+
+<Property name="Template">
+<Type>Documents.Templates</Type>
+</Property>
+
+<Property name="URLtoXML">
+<Type>%String</Type>
+</Property>
+
+<Property name="URLtoScan">
+<Type>%String</Type>
+</Property>
+
+<Property name="StartDate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="EndDate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="ArchiveDate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Number">
+<Type>%String</Type>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Documents.DocumentD</DataLocation>
+<DefaultData>DocumentDefaultData</DefaultData>
+<IdLocation>^Documents.DocumentD</IdLocation>
+<IndexLocation>^Documents.DocumentI</IndexLocation>
+<StreamLocation>^Documents.DocumentS</StreamLocation>
+<Data name="DocumentDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Template</Value>
+</Value>
+<Value name="3">
+<Value>URLtoXML</Value>
+</Value>
+<Value name="4">
+<Value>URLtoScan</Value>
+</Value>
+<Value name="5">
+<Value>StartDate</Value>
+</Value>
+<Value name="6">
+<Value>EndDate</Value>
+</Value>
+<Value name="7">
+<Value>ArchiveDate</Value>
+</Value>
+<Value name="8">
+<Value>Number</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Documents.DynamicParameters">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62162,85585.318628</TimeChanged>
+<TimeCreated>62162,85564.832929</TimeCreated>
+
+<Property name="SQLQuery">
+<Type>%String</Type>
+</Property>
+
+<Property name="Pattern">
+<Type>Documents.Templates</Type>
+<Cardinality>one</Cardinality>
+<Inverse>DynamicParameters</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PatternIndex">
+<Properties>Pattern</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Documents.DynamicParametersD</DataLocation>
+<DefaultData>DynamicParametersDefaultData</DefaultData>
+<IdLocation>^Documents.DynamicParametersD</IdLocation>
+<IndexLocation>^Documents.DynamicParametersI</IndexLocation>
+<StreamLocation>^Documents.DynamicParametersS</StreamLocation>
+<Data name="DynamicParametersDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>SQLQuery</Value>
+</Value>
+<Value name="3">
+<Value>Pattern</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Documents.Templates">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62163,1815.008084</TimeChanged>
+<TimeCreated>62158,45219.331402</TimeCreated>
+
+<Property name="URLtoXML">
+<Type>%String</Type>
+</Property>
+
+<Property name="AcceptanceDate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Number">
+<Type>%String</Type>
+</Property>
+
+<Property name="Type">
+<Type>Documents.TemplateTypes</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Templates</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="TypeIndex">
+<Properties>Type</Properties>
+</Index>
+
+<Property name="DynamicParameters">
+<Type>Documents.DynamicParameters</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Pattern</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Method name="getParameters">
+<ReturnType>%ListOfDataTypes</ReturnType>
+<Implementation><![CDATA[
+	s pars = ..DynamicParameters
+	s out = ##class(%ListOfDataTypes).%New()
+	
+	if (pars.IsEmpty()) q out
+	
+	s key = pars.Next()
+	while ("" = ""){
+		s temp = pars.GetAt(key)
+		s par = ##class(%ArrayOfDataTypes).%New()
+		w temp.SQLQuery, !
+		d par.SetAt(temp.%Id(), "id"), par.SetAt(temp.SQLQuery, "query")
+		d out.Insert(par)
+		
+		s key = pars.Next(key)
+		w key ,!
+		if (key = "") q
+	}
+	q out
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Documents.TemplatesD</DataLocation>
+<DefaultData>TemplatesDefaultData</DefaultData>
+<IdLocation>^Documents.TemplatesD</IdLocation>
+<IndexLocation>^Documents.TemplatesI</IndexLocation>
+<StreamLocation>^Documents.TemplatesS</StreamLocation>
+<Data name="TemplatesDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>URLtoXML</Value>
+</Value>
+<Value name="3">
+<Value>AcceptanceDate</Value>
+</Value>
+<Value name="4">
+<Value>Name</Value>
+</Value>
+<Value name="5">
+<Value>Number</Value>
+</Value>
+<Value name="6">
+<Value>Type</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Documents.TemplateTypes">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48238.648948</TimeChanged>
+<TimeCreated>62158,45220.16367</TimeCreated>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Templates">
+<Type>Documents.Templates</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Type</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Documents.TemplateTypesD</DataLocation>
+<DefaultData>TemplateTypesDefaultData</DefaultData>
+<IdLocation>^Documents.TemplateTypesD</IdLocation>
+<IndexLocation>^Documents.TemplateTypesI</IndexLocation>
+<StreamLocation>^Documents.TemplateTypesS</StreamLocation>
+<Data name="TemplateTypesDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Department">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48242.455365</TimeChanged>
+<TimeCreated>62158,45222.14314</TimeCreated>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Parent">
+<Type>Institute.Department</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Children</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="ParentIndex">
+<Properties>Parent</Properties>
+</Index>
+
+<Property name="Children">
+<Type>Institute.Department</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Parent</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.DepartmentD</DataLocation>
+<DefaultData>DepartmentDefaultData</DefaultData>
+<IdLocation>^Institute.DepartmentD</IdLocation>
+<IndexLocation>^Institute.DepartmentI</IndexLocation>
+<StreamLocation>^Institute.DepartmentS</StreamLocation>
+<Data name="DepartmentDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>Parent</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Employee">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48244.928581</TimeChanged>
+<TimeCreated>62158,44834.564677</TimeCreated>
+
+<Property name="AcceptanceDate">
+<Type>%Date</Type>
+</Property>
+
+<Property name="DeductionDate">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Postal">
+<Type>%String</Type>
+</Property>
+
+<Property name="Card">
+<Type>%String</Type>
+</Property>
+
+<Property name="Insurance">
+<Type>%String</Type>
+</Property>
+
+<Property name="Receipt">
+<Type>%String</Type>
+</Property>
+
+<Property name="Person">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Person">
+<Properties>Person</Properties>
+<ReferencedClass>Institute.Person</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.EmployeeD</DataLocation>
+<DefaultData>EmployeeDefaultData</DefaultData>
+<IdLocation>^Institute.EmployeeD</IdLocation>
+<IndexLocation>^Institute.EmployeeI</IndexLocation>
+<StreamLocation>^Institute.EmployeeS</StreamLocation>
+<Data name="EmployeeDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>AcceptanceDate</Value>
+</Value>
+<Value name="3">
+<Value>DeductionDate</Value>
+</Value>
+<Value name="4">
+<Value>Postal</Value>
+</Value>
+<Value name="5">
+<Value>Card</Value>
+</Value>
+<Value name="6">
+<Value>Insurance</Value>
+</Value>
+<Value name="7">
+<Value>Receipt</Value>
+</Value>
+<Value name="8">
+<Value>Person</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Group">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48252.436642</TimeChanged>
+<TimeCreated>62158,46213.605022</TimeCreated>
+
+<Property name="CreationDate">
+<Type>%Date</Type>
+</Property>
+
+<Property name="DisbandmentDate">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Number">
+<Type>%String</Type>
+</Property>
+
+<Property name="Chair">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Chair">
+<Properties>Chair</Properties>
+<ReferencedClass>Institute.Department</ReferencedClass>
+</ForeignKey>
+
+<Property name="Faculty">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Faculty">
+<Properties>Faculty</Properties>
+<ReferencedClass>Institute.Department</ReferencedClass>
+</ForeignKey>
+
+<Property name="Speciality">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Speciality">
+<Properties>Speciality</Properties>
+<ReferencedClass>Institute.Speciality</ReferencedClass>
+</ForeignKey>
+
+<Property name="Course">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="Plan">
+<Type>Institute.Plan</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Groups</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PlanIndex">
+<Properties>Plan</Properties>
+</Index>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.GroupD</DataLocation>
+<DefaultData>GroupDefaultData</DefaultData>
+<IdLocation>^Institute.GroupD</IdLocation>
+<IndexLocation>^Institute.GroupI</IndexLocation>
+<StreamLocation>^Institute.GroupS</StreamLocation>
+<Data name="GroupDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>CreationDate</Value>
+</Value>
+<Value name="3">
+<Value>DisbandmentDate</Value>
+</Value>
+<Value name="4">
+<Value>Number</Value>
+</Value>
+<Value name="5">
+<Value>Chair</Value>
+</Value>
+<Value name="6">
+<Value>Faculty</Value>
+</Value>
+<Value name="7">
+<Value>Speciality</Value>
+</Value>
+<Value name="8">
+<Value>Course</Value>
+</Value>
+<Value name="9">
+<Value>Plan</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.List">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48269.026556</TimeChanged>
+<TimeCreated>62158,47777.777206</TimeCreated>
+
+<Property name="ProgressBook">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="ProgressBook">
+<Properties>ProgressBook</Properties>
+<ReferencedClass>Institute.ProgressBook</ReferencedClass>
+</ForeignKey>
+
+<Property name="Student">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Student">
+<Properties>Student</Properties>
+<ReferencedClass>Institute.Student</ReferencedClass>
+</ForeignKey>
+
+<Property name="Value">
+<Type>%Float</Type>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.ListD</DataLocation>
+<DefaultData>ListDefaultData</DefaultData>
+<IdLocation>^Institute.ListD</IdLocation>
+<IndexLocation>^Institute.ListI</IndexLocation>
+<StreamLocation>^Institute.ListS</StreamLocation>
+<Data name="ListDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>ProgressBook</Value>
+</Value>
+<Value name="3">
+<Value>Student</Value>
+</Value>
+<Value name="4">
+<Value>Value</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Notification">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48250.279302</TimeChanged>
+<TimeCreated>62158,46227.541326</TimeCreated>
+
+<Property name="Text">
+<Type>%String</Type>
+</Property>
+
+<Property name="Start">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="End">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Period">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Person">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Person">
+<Properties>Person</Properties>
+<ReferencedClass>Institute.Person</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.NotificationD</DataLocation>
+<DefaultData>NotificationDefaultData</DefaultData>
+<IdLocation>^Institute.NotificationD</IdLocation>
+<IndexLocation>^Institute.NotificationI</IndexLocation>
+<StreamLocation>^Institute.NotificationS</StreamLocation>
+<Data name="NotificationDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Text</Value>
+</Value>
+<Value name="3">
+<Value>Start</Value>
+</Value>
+<Value name="4">
+<Value>End</Value>
+</Value>
+<Value name="5">
+<Value>Period</Value>
+</Value>
+<Value name="6">
+<Value>Person</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Person">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48073.033981</TimeChanged>
+<TimeCreated>62158,45221.171342</TimeCreated>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Permit">
+<Type>%String</Type>
+</Property>
+
+<Property name="Number">
+<Type>%String</Type>
+</Property>
+
+<Property name="DeliveryDate">
+<Type>%String</Type>
+</Property>
+
+<Property name="INN">
+<Type>%String</Type>
+</Property>
+
+<Property name="DOB">
+<Type>%Date</Type>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.PersonD</DataLocation>
+<DefaultData>PersonDefaultData</DefaultData>
+<IdLocation>^Institute.PersonD</IdLocation>
+<IndexLocation>^Institute.PersonI</IndexLocation>
+<StreamLocation>^Institute.PersonS</StreamLocation>
+<Data name="PersonDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>Permit</Value>
+</Value>
+<Value name="4">
+<Value>Number</Value>
+</Value>
+<Value name="5">
+<Value>DeliveryDate</Value>
+</Value>
+<Value name="6">
+<Value>INN</Value>
+</Value>
+<Value name="7">
+<Value>DOB</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Plan">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48263.748467</TimeChanged>
+<TimeCreated>62158,47792.671474</TimeCreated>
+
+<Property name="StartDate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="EndDate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Groups">
+<Type>Institute.Group</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Plan</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Reports">
+<Type>Institute.Reports</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Plan</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.PlanD</DataLocation>
+<DefaultData>PlanDefaultData</DefaultData>
+<IdLocation>^Institute.PlanD</IdLocation>
+<IndexLocation>^Institute.PlanI</IndexLocation>
+<StreamLocation>^Institute.PlanS</StreamLocation>
+<Data name="PlanDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>StartDate</Value>
+</Value>
+<Value name="3">
+<Value>EndDate</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.ProgressBook">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48257.765862</TimeChanged>
+<TimeCreated>62158,47691.743371</TimeCreated>
+
+<Property name="Date">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Group">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Group">
+<Properties>Group</Properties>
+<ReferencedClass>Institute.Group</ReferencedClass>
+</ForeignKey>
+
+<Property name="Teacher">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Teacher">
+<Properties>Teacher</Properties>
+<ReferencedClass>Institute.Teacher</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.ProgressBookD</DataLocation>
+<DefaultData>ProgressBookDefaultData</DefaultData>
+<IdLocation>^Institute.ProgressBookD</IdLocation>
+<IndexLocation>^Institute.ProgressBookI</IndexLocation>
+<StreamLocation>^Institute.ProgressBookS</StreamLocation>
+<Data name="ProgressBookDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Date</Value>
+</Value>
+<Value name="3">
+<Value>Group</Value>
+</Value>
+<Value name="4">
+<Value>Teacher</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Reports">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48265.380781</TimeChanged>
+<TimeCreated>62158,47794.133794</TimeCreated>
+
+<Property name="Time">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Type">
+<Type>%String</Type>
+</Property>
+
+<Property name="Plan">
+<Type>Institute.Plan</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Reports</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PlanIndex">
+<Properties>Plan</Properties>
+</Index>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.ReportsD</DataLocation>
+<DefaultData>ReportsDefaultData</DefaultData>
+<IdLocation>^Institute.ReportsD</IdLocation>
+<IndexLocation>^Institute.ReportsI</IndexLocation>
+<StreamLocation>^Institute.ReportsS</StreamLocation>
+<Data name="ReportsDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Time</Value>
+</Value>
+<Value name="3">
+<Value>Type</Value>
+</Value>
+<Value name="4">
+<Value>Plan</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Speciality">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48254.080614</TimeChanged>
+<TimeCreated>62158,47784.132364</TimeCreated>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Number">
+<Type>%String</Type>
+</Property>
+
+<Property name="Semester">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="Subjects">
+<Type>Institute.SubjectSpeciality</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Speciality</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.SpecialityD</DataLocation>
+<DefaultData>SpecialityDefaultData</DefaultData>
+<IdLocation>^Institute.SpecialityD</IdLocation>
+<IndexLocation>^Institute.SpecialityI</IndexLocation>
+<StreamLocation>^Institute.SpecialityS</StreamLocation>
+<Data name="SpecialityDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>Number</Value>
+</Value>
+<Value name="4">
+<Value>Semester</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Student">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48248.504817</TimeChanged>
+<TimeCreated>62158,45224.55898</TimeCreated>
+
+<Property name="AcceptanceDate">
+<Type>%Date</Type>
+</Property>
+
+<Property name="DeductionDate">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Number">
+<Type>%String</Type>
+</Property>
+
+<Property name="TestBook">
+<Type>%String</Type>
+</Property>
+
+<Property name="Person">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Person">
+<Properties>Person</Properties>
+<ReferencedClass>Institute.Person</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.StudentD</DataLocation>
+<DefaultData>StudentDefaultData</DefaultData>
+<IdLocation>^Institute.StudentD</IdLocation>
+<IndexLocation>^Institute.StudentI</IndexLocation>
+<StreamLocation>^Institute.StudentS</StreamLocation>
+<Data name="StudentDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>AcceptanceDate</Value>
+</Value>
+<Value name="3">
+<Value>DeductionDate</Value>
+</Value>
+<Value name="4">
+<Value>Number</Value>
+</Value>
+<Value name="5">
+<Value>TestBook</Value>
+</Value>
+<Value name="6">
+<Value>Person</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Students">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,45223.458643</TimeChanged>
+<TimeCreated>62158,45223.458643</TimeCreated>
+</Class>
+
+
+<Class name="Institute.Subject">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48259.495061</TimeChanged>
+<TimeCreated>62158,47789.252782</TimeCreated>
+
+<Property name="Time">
+<Type>%Float</Type>
+</Property>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<Property name="Type">
+<Type>%String</Type>
+</Property>
+
+<Property name="Report">
+<Type>%String</Type>
+</Property>
+
+<Property name="Specialities">
+<Type>Institute.SubjectSpeciality</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Subject</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Teachers">
+<Type>Institute.TeacherSubjects</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Subject</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.SubjectD</DataLocation>
+<DefaultData>SubjectDefaultData</DefaultData>
+<IdLocation>^Institute.SubjectD</IdLocation>
+<IndexLocation>^Institute.SubjectI</IndexLocation>
+<StreamLocation>^Institute.SubjectS</StreamLocation>
+<Data name="SubjectDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Time</Value>
+</Value>
+<Value name="3">
+<Value>Name</Value>
+</Value>
+<Value name="4">
+<Value>Type</Value>
+</Value>
+<Value name="5">
+<Value>Report</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.SubjectSpeciality">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48261.449964</TimeChanged>
+<TimeCreated>62158,47790.673374</TimeCreated>
+
+<Property name="Subject">
+<Type>Institute.Subject</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Specialities</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="SubjectIndex">
+<Properties>Subject</Properties>
+</Index>
+
+<Property name="Speciality">
+<Type>Institute.Speciality</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Subjects</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="SpecialityIndex">
+<Properties>Speciality</Properties>
+</Index>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.SubjectSpecialityD</DataLocation>
+<DefaultData>SubjectSpecialityDefaultData</DefaultData>
+<IdLocation>^Institute.SubjectSpecialityD</IdLocation>
+<IndexLocation>^Institute.SubjectSpecialityI</IndexLocation>
+<StreamLocation>^Institute.SubjectSpecialityS</StreamLocation>
+<Data name="SubjectSpecialityDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Subject</Value>
+</Value>
+<Value name="3">
+<Value>Speciality</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.Teacher">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48255.723619</TimeChanged>
+<TimeCreated>62158,46904.011531</TimeCreated>
+
+<Property name="Chair">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Chair">
+<Properties>Chair</Properties>
+<ReferencedClass>Institute.Department</ReferencedClass>
+</ForeignKey>
+
+<Property name="Faculty">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Faculty">
+<Properties>Faculty</Properties>
+<ReferencedClass>Institute.Department</ReferencedClass>
+</ForeignKey>
+
+<Property name="Speciality">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Speciality">
+<Properties>Speciality</Properties>
+<ReferencedClass>Institute.Speciality</ReferencedClass>
+</ForeignKey>
+
+<Property name="Degree">
+<Type>%String</Type>
+</Property>
+
+<Property name="Employee">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Employee">
+<Properties>Employee</Properties>
+<ReferencedClass>Institute.Employee</ReferencedClass>
+</ForeignKey>
+
+<Property name="Subjects">
+<Type>Institute.TeacherSubjects</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Teacher</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.TeacherD</DataLocation>
+<DefaultData>TeacherDefaultData</DefaultData>
+<IdLocation>^Institute.TeacherD</IdLocation>
+<IndexLocation>^Institute.TeacherI</IndexLocation>
+<StreamLocation>^Institute.TeacherS</StreamLocation>
+<Data name="TeacherDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Chair</Value>
+</Value>
+<Value name="3">
+<Value>Faculty</Value>
+</Value>
+<Value name="4">
+<Value>Speciality</Value>
+</Value>
+<Value name="5">
+<Value>Degree</Value>
+</Value>
+<Value name="6">
+<Value>Employee</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Institute.TeacherSubjects">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48267.420363</TimeChanged>
+<TimeCreated>62158,47544.628773</TimeCreated>
+
+<Property name="Teacher">
+<Type>Institute.Teacher</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Subjects</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="TeacherIndex">
+<Properties>Teacher</Properties>
+</Index>
+
+<Property name="Subject">
+<Type>Institute.Subject</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Teachers</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="SubjectIndex">
+<Properties>Subject</Properties>
+</Index>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Institute.TeacherSubjectsD</DataLocation>
+<DefaultData>TeacherSubjectsDefaultData</DefaultData>
+<IdLocation>^Institute.TeacherSubjectsD</IdLocation>
+<IndexLocation>^Institute.TeacherSubjectsI</IndexLocation>
+<StreamLocation>^Institute.TeacherSubjectsS</StreamLocation>
+<Data name="TeacherSubjectsDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Teacher</Value>
+</Value>
+<Value name="3">
+<Value>Subject</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Signature.Signature">
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62158,48225.1058</TimeChanged>
+<TimeCreated>62158,47785.654781</TimeCreated>
+
+<Property name="Key">
+<Type>%String</Type>
+</Property>
+
+<Property name="Hash">
+<Type>%String</Type>
+</Property>
+
+<Property name="Person">
+<Type>%Integer</Type>
+</Property>
+
+<ForeignKey name="Person">
+<Properties>Person</Properties>
+<ReferencedClass>Institute.Person</ReferencedClass>
+</ForeignKey>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Signature.SignatureD</DataLocation>
+<DefaultData>SignatureDefaultData</DefaultData>
+<IdLocation>^Signature.SignatureD</IdLocation>
+<IndexLocation>^Signature.SignatureI</IndexLocation>
+<StreamLocation>^Signature.SignatureS</StreamLocation>
+<Data name="SignatureDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Key</Value>
+</Value>
+<Value name="3">
+<Value>Hash</Value>
+</Value>
+<Value name="4">
+<Value>Person</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>
