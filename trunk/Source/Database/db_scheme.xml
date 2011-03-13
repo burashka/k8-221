@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Export generator="Cache" version="24" zv="Cache for Windows (x86-32) 2010.1.4 (Build 803)" ts="2011-03-13 00:35:56">
+<Export generator="Cache" version="24" zv="Cache for Windows (x86-32) 2010.1.4 (Build 803)" ts="2011-03-13 02:56:25">
 <Class name="Authorization.DictRoles">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48231.931129</TimeChanged>
+<TimeChanged>62163,5022.55049</TimeChanged>
 <TimeCreated>62158,45218.078182</TimeCreated>
 
 <Property name="Name">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(20)"/>
 </Property>
 
 <Property name="Type">
@@ -44,13 +45,19 @@
 <Value>Type</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Name">
+</Property>
+<Property name="Type">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Authorization.Properties">
-<Super>%Persistent</Super>
-<TimeChanged>62158,48233.733584</TimeChanged>
+<Super>%Persistent,%Populate</Super>
+<TimeChanged>62163,10143.894718</TimeChanged>
 <TimeCreated>62158,43814.331962</TimeCreated>
 
 <Property name="User">
@@ -106,21 +113,31 @@
 <Value>Value</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Role">
+</Property>
+<Property name="User">
+</Property>
+<Property name="Value">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Authorization.User">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48230.053931</TimeChanged>
+<TimeChanged>62163,9667.298686</TimeChanged>
 <TimeCreated>62158,44535.354017</TimeCreated>
 
 <Property name="Login">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(10)"/>
 </Property>
 
 <Property name="Password">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(20)"/>
 </Property>
 
 <Property name="Roles">
@@ -131,13 +148,15 @@
 </Property>
 
 <Property name="Person">
-<Type>%Integer</Type>
+<Type>Institute.Person</Type>
+<Cardinality>one</Cardinality>
+<Inverse>User</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Person">
+<Index name="PersonIndex">
 <Properties>Person</Properties>
-<ReferencedClass>Institute.Person</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -166,13 +185,21 @@
 <Value>Person</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Login">
+</Property>
+<Property name="Password">
+</Property>
+<Property name="Person">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Documents.Contragents">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48246.821441</TimeChanged>
+<TimeChanged>62163,6585.705207</TimeChanged>
 <TimeCreated>62158,44950.096598</TimeCreated>
 
 <Property name="DateOfSigning">
@@ -193,13 +220,15 @@
 </ForeignKey>
 
 <Property name="Person">
-<Type>%Integer</Type>
+<Type>Institute.Person</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Contragent</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Person">
+<Index name="PersonIndex">
 <Properties>Person</Properties>
-<ReferencedClass>Institute.Person</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -237,19 +266,17 @@
 
 <Class name="Documents.Document">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48240.667769</TimeChanged>
+<TimeChanged>62163,6589.889414</TimeChanged>
 <TimeCreated>62158,44327.220252</TimeCreated>
-
-<Property name="Template">
-<Type>Documents.Templates</Type>
-</Property>
 
 <Property name="URLtoXML">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="URLtoScan">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="StartDate">
@@ -267,6 +294,17 @@
 <Property name="Number">
 <Type>%String</Type>
 </Property>
+
+<Property name="Template">
+<Type>Documents.Templates</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Docs</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="TemplateIndex">
+<Properties>Template</Properties>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -307,17 +345,34 @@
 <Value>Number</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="ArchiveDate">
+</Property>
+<Property name="EndDate">
+</Property>
+<Property name="Number">
+</Property>
+<Property name="StartDate">
+</Property>
+<Property name="Template">
+</Property>
+<Property name="URLtoScan">
+</Property>
+<Property name="URLtoXML">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Documents.DynamicParameters">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62162,85585.318628</TimeChanged>
+<TimeChanged>62163,7304.49452</TimeChanged>
 <TimeCreated>62162,85564.832929</TimeCreated>
 
 <Property name="SQLQuery">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="Pattern">
@@ -330,6 +385,10 @@
 <Index name="PatternIndex">
 <Properties>Pattern</Properties>
 </Index>
+
+<Projection name="JProjection">
+<Type>%Projection.Java</Type>
+</Projection>
 
 <Storage name="Default">
 <Type>%Library.CacheStorage</Type>
@@ -357,11 +416,12 @@
 
 <Class name="Documents.Templates">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62163,1815.008084</TimeChanged>
+<TimeChanged>62163,5992.143465</TimeChanged>
 <TimeCreated>62158,45219.331402</TimeCreated>
 
 <Property name="URLtoXML">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="AcceptanceDate">
@@ -370,6 +430,7 @@
 
 <Property name="Name">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="Number">
@@ -391,6 +452,13 @@
 <Type>Documents.DynamicParameters</Type>
 <Cardinality>many</Cardinality>
 <Inverse>Pattern</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Docs">
+<Type>Documents.Document</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Template</Inverse>
 <Relationship>1</Relationship>
 </Property>
 
@@ -451,17 +519,30 @@
 <Value>Type</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="AcceptanceDate">
+</Property>
+<Property name="Name">
+</Property>
+<Property name="Number">
+</Property>
+<Property name="Type">
+</Property>
+<Property name="URLtoXML">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Documents.TemplateTypes">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48238.648948</TimeChanged>
+<TimeChanged>62163,5032.250344</TimeChanged>
 <TimeCreated>62158,45220.16367</TimeCreated>
 
 <Property name="Name">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="Templates">
@@ -492,13 +573,17 @@
 <Value>Name</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Name">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Department">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48242.455365</TimeChanged>
+<TimeChanged>62163,9668.869792</TimeChanged>
 <TimeCreated>62158,45222.14314</TimeCreated>
 
 <Property name="Name">
@@ -520,6 +605,34 @@
 <Type>Institute.Department</Type>
 <Cardinality>many</Cardinality>
 <Inverse>Parent</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Groups">
+<Type>Institute.Group</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Chair</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Faculties">
+<Type>Institute.Group</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Faculty</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Teachers">
+<Type>Institute.Teacher</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Chair</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="FacTeachers">
+<Type>Institute.Teacher</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Faculty</Inverse>
 <Relationship>1</Relationship>
 </Property>
 
@@ -547,13 +660,19 @@
 <Value>Parent</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Name">
+</Property>
+<Property name="Parent">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Employee">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48244.928581</TimeChanged>
+<TimeChanged>62163,9668.371513</TimeChanged>
 <TimeCreated>62158,44834.564677</TimeCreated>
 
 <Property name="AcceptanceDate">
@@ -566,28 +685,41 @@
 
 <Property name="Postal">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(10)"/>
 </Property>
 
 <Property name="Card">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(10)"/>
 </Property>
 
 <Property name="Insurance">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="Receipt">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(50)"/>
 </Property>
 
 <Property name="Person">
-<Type>%Integer</Type>
+<Type>Institute.Person</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Employees</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Person">
+<Property name="Teachers">
+<Type>Institute.Teacher</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Employee</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PersonIndex">
 <Properties>Person</Properties>
-<ReferencedClass>Institute.Person</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -625,14 +757,33 @@
 <Value name="8">
 <Value>Person</Value>
 </Value>
+<Value name="9">
+<Value>Teachers</Value>
+</Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="AcceptanceDate">
+</Property>
+<Property name="Card">
+</Property>
+<Property name="DeductionDate">
+</Property>
+<Property name="Insurance">
+</Property>
+<Property name="Person">
+</Property>
+<Property name="Postal">
+</Property>
+<Property name="Receipt">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Group">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48252.436642</TimeChanged>
+<TimeChanged>62163,9843.666218</TimeChanged>
 <TimeCreated>62158,46213.605022</TimeCreated>
 
 <Property name="CreationDate">
@@ -646,33 +797,6 @@
 <Property name="Number">
 <Type>%String</Type>
 </Property>
-
-<Property name="Chair">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Chair">
-<Properties>Chair</Properties>
-<ReferencedClass>Institute.Department</ReferencedClass>
-</ForeignKey>
-
-<Property name="Faculty">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Faculty">
-<Properties>Faculty</Properties>
-<ReferencedClass>Institute.Department</ReferencedClass>
-</ForeignKey>
-
-<Property name="Speciality">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Speciality">
-<Properties>Speciality</Properties>
-<ReferencedClass>Institute.Speciality</ReferencedClass>
-</ForeignKey>
 
 <Property name="Course">
 <Type>%Integer</Type>
@@ -688,6 +812,53 @@
 <Index name="PlanIndex">
 <Properties>Plan</Properties>
 </Index>
+
+<Property name="Chair">
+<Type>Institute.Department</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Groups</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="ChairIndex">
+<Properties>Chair</Properties>
+</Index>
+
+<Property name="Faculty">
+<Type>Institute.Department</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Faculties</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="FacultyIndex">
+<Properties>Faculty</Properties>
+</Index>
+
+<Property name="Speciality">
+<Type>Institute.Speciality</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Groups</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="SpecialitiyIndex">
+<Properties>Speciality</Properties>
+</Index>
+
+<Property name="ProgressBooks">
+<Type>Institute.ProgressBook</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Group</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Students">
+<Type>Institute.Student</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Group</Inverse>
+<Relationship>1</Relationship>
+</Property>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -730,37 +901,62 @@
 <Value name="9">
 <Value>Plan</Value>
 </Value>
+<Value name="10">
+<Value>Groups</Value>
+</Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Chair">
+</Property>
+<Property name="Course">
+</Property>
+<Property name="CreationDate">
+</Property>
+<Property name="DisbandmentDate">
+</Property>
+<Property name="Faculty">
+</Property>
+<Property name="Number">
+</Property>
+<Property name="Plan">
+</Property>
+<Property name="Speciality">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.List">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48269.026556</TimeChanged>
+<TimeChanged>62163,9674.326559</TimeChanged>
 <TimeCreated>62158,47777.777206</TimeCreated>
-
-<Property name="ProgressBook">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="ProgressBook">
-<Properties>ProgressBook</Properties>
-<ReferencedClass>Institute.ProgressBook</ReferencedClass>
-</ForeignKey>
-
-<Property name="Student">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Student">
-<Properties>Student</Properties>
-<ReferencedClass>Institute.Student</ReferencedClass>
-</ForeignKey>
 
 <Property name="Value">
 <Type>%Float</Type>
 </Property>
+
+<Property name="ProgressBook">
+<Type>Institute.ProgressBook</Type>
+<Cardinality>one</Cardinality>
+<Inverse>ProgressBooks</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="ProgressBookIndex">
+<Properties>ProgressBook</Properties>
+</Index>
+
+<Property name="Student">
+<Type>Institute.Student</Type>
+<Cardinality>one</Cardinality>
+<Inverse>ProgressBooks</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="StudentIndex">
+<Properties>Student</Properties>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -789,13 +985,21 @@
 <Value>Value</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="ProgressBook">
+</Property>
+<Property name="Student">
+</Property>
+<Property name="Value">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Notification">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48250.279302</TimeChanged>
+<TimeChanged>62163,9671.839345</TimeChanged>
 <TimeCreated>62158,46227.541326</TimeCreated>
 
 <Property name="Text">
@@ -815,13 +1019,15 @@
 </Property>
 
 <Property name="Person">
-<Type>%Integer</Type>
+<Type>Institute.Person</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Notifications</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Person">
+<Index name="PersonIndex">
 <Properties>Person</Properties>
-<ReferencedClass>Institute.Person</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -856,13 +1062,25 @@
 <Value>Person</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="End">
+</Property>
+<Property name="Period">
+</Property>
+<Property name="Person">
+</Property>
+<Property name="Start">
+</Property>
+<Property name="Text">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Person">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48073.033981</TimeChanged>
+<TimeChanged>62163,9844.357301</TimeChanged>
 <TimeCreated>62158,45221.171342</TimeCreated>
 
 <Property name="Name">
@@ -887,6 +1105,48 @@
 
 <Property name="DOB">
 <Type>%Date</Type>
+</Property>
+
+<Property name="Notifications">
+<Type>Institute.Notification</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Person</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="User">
+<Type>Authorization.User</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Person</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Contragent">
+<Type>Documents.Contragents</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Person</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Employees">
+<Type>Institute.Employee</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Person</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Students">
+<Type>Institute.Student</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Person</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Signatures">
+<Type>Signature.Signature</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Person</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
 <Projection name="JProjection">
@@ -925,13 +1185,27 @@
 <Value>DOB</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="DOB">
+</Property>
+<Property name="DeliveryDate">
+</Property>
+<Property name="INN">
+</Property>
+<Property name="Name">
+</Property>
+<Property name="Number">
+</Property>
+<Property name="Permit">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Plan">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48263.748467</TimeChanged>
+<TimeChanged>62163,9670.843485</TimeChanged>
 <TimeCreated>62158,47792.671474</TimeCreated>
 
 <Property name="StartDate">
@@ -980,36 +1254,53 @@
 <Value>EndDate</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="EndDate">
+</Property>
+<Property name="StartDate">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.ProgressBook">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48257.765862</TimeChanged>
+<TimeChanged>62163,9669.872128</TimeChanged>
 <TimeCreated>62158,47691.743371</TimeCreated>
 
 <Property name="Date">
 <Type>%Date</Type>
 </Property>
 
-<Property name="Group">
-<Type>%Integer</Type>
+<Property name="ProgressBooks">
+<Type>Institute.List</Type>
+<Cardinality>many</Cardinality>
+<Inverse>ProgressBook</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Group">
+<Property name="Group">
+<Type>Institute.Group</Type>
+<Cardinality>one</Cardinality>
+<Inverse>ProgressBooks</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="GroupIndex">
 <Properties>Group</Properties>
-<ReferencedClass>Institute.Group</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Property name="Teacher">
-<Type>%Integer</Type>
+<Type>Institute.Teacher</Type>
+<Cardinality>one</Cardinality>
+<Inverse>ProgressBooks</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Teacher">
+<Index name="TeacherIndex">
 <Properties>Teacher</Properties>
-<ReferencedClass>Institute.Teacher</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -1038,13 +1329,21 @@
 <Value>Teacher</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Date">
+</Property>
+<Property name="Group">
+</Property>
+<Property name="Teacher">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Reports">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48265.380781</TimeChanged>
+<TimeChanged>62163,9670.358182</TimeChanged>
 <TimeCreated>62158,47794.133794</TimeCreated>
 
 <Property name="Time">
@@ -1093,13 +1392,21 @@
 <Value>Plan</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Plan">
+</Property>
+<Property name="Time">
+</Property>
+<Property name="Type">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Speciality">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48254.080614</TimeChanged>
+<TimeChanged>62163,9672.861562</TimeChanged>
 <TimeCreated>62158,47784.132364</TimeCreated>
 
 <Property name="Name">
@@ -1116,6 +1423,13 @@
 
 <Property name="Subjects">
 <Type>Institute.SubjectSpeciality</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Speciality</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Groups">
+<Type>Institute.Group</Type>
 <Cardinality>many</Cardinality>
 <Inverse>Speciality</Inverse>
 <Relationship>1</Relationship>
@@ -1148,13 +1462,21 @@
 <Value>Semester</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Name">
+</Property>
+<Property name="Number">
+</Property>
+<Property name="Semester">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Student">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48248.504817</TimeChanged>
+<TimeChanged>62163,9671.34536</TimeChanged>
 <TimeCreated>62158,45224.55898</TimeCreated>
 
 <Property name="AcceptanceDate">
@@ -1173,14 +1495,34 @@
 <Type>%String</Type>
 </Property>
 
-<Property name="Person">
-<Type>%Integer</Type>
+<Property name="ProgressBooks">
+<Type>Institute.List</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Student</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Person">
+<Property name="Person">
+<Type>Institute.Person</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Students</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PersonIndex">
 <Properties>Person</Properties>
-<ReferencedClass>Institute.Person</ReferencedClass>
-</ForeignKey>
+</Index>
+
+<Property name="Group">
+<Type>Institute.Group</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Students</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="GroupIndex">
+<Properties>Group</Properties>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -1214,7 +1556,24 @@
 <Value name="6">
 <Value>Person</Value>
 </Value>
+<Value name="7">
+<Value>Group</Value>
+</Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="AcceptanceDate">
+</Property>
+<Property name="DeductionDate">
+</Property>
+<Property name="Group">
+</Property>
+<Property name="Number">
+</Property>
+<Property name="Person">
+</Property>
+<Property name="TestBook">
+</Property>
 </Storage>
 </Class>
 
@@ -1228,7 +1587,7 @@
 
 <Class name="Institute.Subject">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48259.495061</TimeChanged>
+<TimeChanged>62163,9673.359448</TimeChanged>
 <TimeCreated>62158,47789.252782</TimeCreated>
 
 <Property name="Time">
@@ -1237,6 +1596,7 @@
 
 <Property name="Name">
 <Type>%String</Type>
+<Parameter name="POPSPEC" value="VarString(10)"/>
 </Property>
 
 <Property name="Type">
@@ -1291,13 +1651,23 @@
 <Value>Report</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Name">
+</Property>
+<Property name="Report">
+</Property>
+<Property name="Time">
+</Property>
+<Property name="Type">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.SubjectSpeciality">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48261.449964</TimeChanged>
+<TimeChanged>62163,9673.83703</TimeChanged>
 <TimeCreated>62158,47790.673374</TimeCreated>
 
 <Property name="Subject">
@@ -1346,32 +1716,20 @@
 <Value>Speciality</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Speciality">
+</Property>
+<Property name="Subject">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Institute.Teacher">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48255.723619</TimeChanged>
+<TimeChanged>62163,9667.856197</TimeChanged>
 <TimeCreated>62158,46904.011531</TimeCreated>
-
-<Property name="Chair">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Chair">
-<Properties>Chair</Properties>
-<ReferencedClass>Institute.Department</ReferencedClass>
-</ForeignKey>
-
-<Property name="Faculty">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Faculty">
-<Properties>Faculty</Properties>
-<ReferencedClass>Institute.Department</ReferencedClass>
-</ForeignKey>
 
 <Property name="Speciality">
 <Type>%Integer</Type>
@@ -1386,21 +1744,52 @@
 <Type>%String</Type>
 </Property>
 
-<Property name="Employee">
-<Type>%Integer</Type>
-</Property>
-
-<ForeignKey name="Employee">
-<Properties>Employee</Properties>
-<ReferencedClass>Institute.Employee</ReferencedClass>
-</ForeignKey>
-
 <Property name="Subjects">
 <Type>Institute.TeacherSubjects</Type>
 <Cardinality>many</Cardinality>
 <Inverse>Teacher</Inverse>
 <Relationship>1</Relationship>
 </Property>
+
+<Property name="ProgressBooks">
+<Type>Institute.ProgressBook</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Teacher</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Chair">
+<Type>Institute.Department</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Teachers</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="ChairIndex">
+<Properties>Chair</Properties>
+</Index>
+
+<Property name="Faculty">
+<Type>Institute.Department</Type>
+<Cardinality>one</Cardinality>
+<Inverse>FacTeachers</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="FacultyIndex">
+<Properties>Faculty</Properties>
+</Index>
+
+<Property name="Employee">
+<Type>Institute.Employee</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Teachers</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="EmployeeIndex">
+<Properties>Employee</Properties>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -1441,7 +1830,7 @@
 
 <Class name="Institute.TeacherSubjects">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48267.420363</TimeChanged>
+<TimeChanged>62163,9674.804167</TimeChanged>
 <TimeCreated>62158,47544.628773</TimeCreated>
 
 <Property name="Teacher">
@@ -1490,13 +1879,19 @@
 <Value>Subject</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Subject">
+</Property>
+<Property name="Teacher">
+</Property>
 </Storage>
 </Class>
 
 
 <Class name="Signature.Signature">
 <Super>%Persistent,%Populate</Super>
-<TimeChanged>62158,48225.1058</TimeChanged>
+<TimeChanged>62163,6581.706368</TimeChanged>
 <TimeCreated>62158,47785.654781</TimeCreated>
 
 <Property name="Key">
@@ -1508,13 +1903,15 @@
 </Property>
 
 <Property name="Person">
-<Type>%Integer</Type>
+<Type>Institute.Person</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Signatures</Inverse>
+<Relationship>1</Relationship>
 </Property>
 
-<ForeignKey name="Person">
+<Index name="PersonIndex">
 <Properties>Person</Properties>
-<ReferencedClass>Institute.Person</ReferencedClass>
-</ForeignKey>
+</Index>
 
 <Projection name="JProjection">
 <Type>%Projection.Java</Type>
@@ -1543,6 +1940,14 @@
 <Value>Person</Value>
 </Value>
 </Data>
+<Property name="%%CLASSNAME">
+</Property>
+<Property name="Hash">
+</Property>
+<Property name="Key">
+</Property>
+<Property name="Person">
+</Property>
 </Storage>
 </Class>
 </Export>
