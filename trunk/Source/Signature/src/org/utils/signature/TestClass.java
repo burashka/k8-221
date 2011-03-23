@@ -8,7 +8,8 @@ import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
+import java.security.spec.EncodedKeySpec;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 public class TestClass {
@@ -21,7 +22,7 @@ public class TestClass {
 		String key = "123asd";
 		String hash = "sha-1";
 		String alg = "a";
-		//System.out.println(Signing.getSign(key, hash, alg, source));
+		// System.out.println(Signing.getSign(key, hash, alg, source));
 
 		try {
 
@@ -47,25 +48,40 @@ public class TestClass {
 			KeyPair pair = keyGen.generateKeyPair();
 			PrivateKey priv = pair.getPrivate();
 			PublicKey pub = pair.getPublic();
-			
+
 			System.out.println(priv);
 			System.out.println(pub);
-			
-			X509EncodedKeySpec spec =
-			      new X509EncodedKeySpec(pub.getEncoded());
 
-			 KeyFactory kf = KeyFactory.getInstance("RSA");
-			 try {
-				System.out.println(kf.generatePublic(spec));
-			} catch (InvalidKeySpecException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			System.out.println("format\n" + priv.getFormat());
+			System.out.println(priv.getAlgorithm());
+			byte[] privBt = priv.getEncoded();
+			for (int i = 0; i < privBt.length; i++)
+				System.out.print(privBt[i]);
+
+			System.out.println("format\n" + pub.getFormat());
+			System.out.println(pub.getAlgorithm());
+			byte[] pubBt = pub.getEncoded();
+			for (int i = 0; i < pubBt.length; i++)
+				System.out.print(pubBt[i]);
+			try {
+				KeyFactory keyFactory = KeyFactory.getInstance(pub
+						.getAlgorithm());
+				EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privBt);
+				PrivateKey privateKey2 = keyFactory
+						.generatePrivate(privateKeySpec);
+
+				System.out.println(privateKey2);
+
+				EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(pubBt);
+				PublicKey publicKey2 = keyFactory.generatePublic(publicKeySpec);
+
+				System.out.println(publicKey2);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
-		
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 
 	}
-
 }
