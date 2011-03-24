@@ -16,22 +16,26 @@ public class SignatureContainer {
 	private final String keyValue; // значение ключа
 	private final PrivateKey[] privateKey = new PrivateKey[1];
 
-	SignatureContainer(String idHash, String idAlg, String keyValue) {
+	SignatureContainer(String idHash, String idAlg, String keyValue)
+			throws Base64DecodingException, NoSuchAlgorithmException, InvalidKeySpecException {
 		this.idHash = idHash;
 		this.idAlg = idAlg;
 		this.keyValue = keyValue;
-		try {
-			this.privateKey[0] = generatePrivateKey();
-		} catch (Base64DecodingException e) {
-			System.out.println("Base64DecodingException");
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			System.out.println("NoSuchAlgorithmException");
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			System.out.println("InvalidKeySpecException");
-			e.printStackTrace();
-		}
+
+		this.privateKey[0] = generatePrivateKey();
+
+	}
+
+	public String getIdHash() {
+		return idHash;
+	}
+
+	public String getIdAlg() {
+		return idAlg;
+	}
+
+	public PrivateKey[] getPrivateKey() {
+		return privateKey;
 	}
 
 	private PrivateKey generatePrivateKey() throws Base64DecodingException,

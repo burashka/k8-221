@@ -16,22 +16,14 @@ public class CertificateContainer {
 	private final String keyValue; // значение ключа
 	private final PublicKey[] publicKey = new PublicKey[1];
 
-	CertificateContainer(String idHash, String idAlg, String keyValue) {
+	CertificateContainer(String idHash, String idAlg, String keyValue)
+			throws Base64DecodingException, NoSuchAlgorithmException, InvalidKeySpecException {
 		this.idHash = idHash;
 		this.idAlg = idAlg;
 		this.keyValue = keyValue;
-		try {
-			this.publicKey[0] = generatePublicKey();
-		} catch (Base64DecodingException e) {
-			System.out.println("Base64DecodingException");
-			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			System.out.println("NoSuchAlgorithmException");
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			System.out.println("InvalidKeySpecException");
-			e.printStackTrace();
-		}
+
+		this.publicKey[0] = generatePublicKey();
+
 	}
 
 	private PublicKey generatePublicKey() throws Base64DecodingException,
@@ -42,6 +34,18 @@ public class CertificateContainer {
 		KeyFactory keyFactory = KeyFactory.getInstance(idAlg);
 
 		return keyFactory.generatePublic(publicKeySpec);
+	}
+
+	public String getIdHash() {
+		return idHash;
+	}
+
+	public String getIdAlg() {
+		return idAlg;
+	}
+
+	public PublicKey[] getPublicKey() {
+		return publicKey;
 	}
 
 	public PublicKey getKey() {
