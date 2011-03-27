@@ -8,7 +8,7 @@ package Authorization;
 **/
 
 public class User extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 2690;
+    private static final long serialVersionUID = 5057;
     private static String CACHE_CLASS_NAME = "Authorization.User";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

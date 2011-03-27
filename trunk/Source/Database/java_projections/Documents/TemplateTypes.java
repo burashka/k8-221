@@ -8,7 +8,7 @@ package Documents;
 **/
 
 public class TemplateTypes extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 277;
+    private static final long serialVersionUID = 3469;
     private static String CACHE_CLASS_NAME = "Documents.TemplateTypes";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

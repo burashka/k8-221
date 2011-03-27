@@ -8,7 +8,7 @@ package Documents;
 **/
 
 public class Document extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 1914;
+    private static final long serialVersionUID = 803;
     private static String CACHE_CLASS_NAME = "Documents.Document";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
