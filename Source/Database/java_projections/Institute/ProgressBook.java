@@ -8,7 +8,7 @@ package Institute;
 **/
 
 public class ProgressBook extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 6191;
+    private static final long serialVersionUID = 5796;
     private static String CACHE_CLASS_NAME = "Institute.ProgressBook";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

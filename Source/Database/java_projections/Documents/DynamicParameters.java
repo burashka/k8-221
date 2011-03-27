@@ -8,7 +8,7 @@ package Documents;
 **/
 
 public class DynamicParameters extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 3382;
+    private static final long serialVersionUID = 3021;
     private static String CACHE_CLASS_NAME = "Documents.DynamicParameters";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

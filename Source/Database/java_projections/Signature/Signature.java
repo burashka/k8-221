@@ -8,7 +8,7 @@ package Signature;
 **/
 
 public class Signature extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 5555;
+    private static final long serialVersionUID = 4678;
     private static String CACHE_CLASS_NAME = "Signature.Signature";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -657,9 +657,64 @@ public class Signature extends com.intersys.classes.Persistent {
     public static void checkAllMethods(com.intersys.objects.Database db ) throws com.intersys.objects.CacheException {
         checkAllMethods(db, CACHE_CLASS_NAME, Signature.class);
     }
-    private static int ii_Hash = 5;
+    private static int ii_CypherAlgorithm = 5;
+    private static int jj_CypherAlgorithm = 0;
+    private static int kk_CypherAlgorithm = 5;
+    /**
+       Verifies that indexes for property <code>CypherAlgorithm</code> in
+       zObjVal are the same as in Cache. It does not return anything
+       but it throws an exception in case of inconsistency.
+
+       <p> Please note, that if there is any inconsistency in zObjVal
+       indexes this is fatal and class can not work correctly and must
+       be regenerated.
+
+       @param db Database used for connection. Note that if you are
+       using multiple databases the class can be consistent with one
+       and inconsistent with another.
+       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
+       @throws com.intersys.objects.CacheException if any error occurred during
+       verification, e.g. communication error with Database.
+       @see #checkAllFieldsValid
+
+     */
+    public static void checkCypherAlgorithmValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "CypherAlgorithm",ii_CypherAlgorithm, jj_CypherAlgorithm, kk_CypherAlgorithm);
+    }
+    /**
+       Returns value of property <code>CypherAlgorithm</code>.
+       <Description>
+       @return current value of <code>CypherAlgorithm</code> represented as
+       <code>java.lang.String</code>
+
+       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#CypherAlgorithm"> CypherAlgorithm</A>
+    */
+    public java.lang.String getCypherAlgorithm()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_CypherAlgorithm,
+                                                jj_CypherAlgorithm,
+                                                com.intersys.objects.Database.RET_PRIM,
+                                                "CypherAlgorithm");
+       return dh.getString();
+    }
+
+    /**
+       Sets new value for <code>CypherAlgorithm</code>.
+       <Description>
+       @param value new value to be set represented as
+       <code>java.lang.String</code>.
+       @throws com.intersys.objects.CacheException if any error occurred during value setting.
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#CypherAlgorithm"> CypherAlgorithm</A>
+    */
+    public void setCypherAlgorithm(java.lang.String value)  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
+        mInternal.setProperty(ii_CypherAlgorithm, jj_CypherAlgorithm,kk_CypherAlgorithm, com.intersys.objects.Database.RET_PRIM, "CypherAlgorithm", dh);
+        return;
+    }
+
+    private static int ii_Hash = 6;
     private static int jj_Hash = 0;
-    private static int kk_Hash = 5;
+    private static int kk_Hash = 6;
     /**
        Verifies that indexes for property <code>Hash</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -740,36 +795,36 @@ public class Signature extends com.intersys.classes.Persistent {
        Returns value of property <code>Key</code>.
        <Description>
        @return current value of <code>Key</code> represented as
-       <code>java.lang.String</code>
+       <code>byte[]</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#Key"> Key</A>
     */
-    public java.lang.String getKey()  throws com.intersys.objects.CacheException {
+    public byte[] getKey()  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Key,
                                                 jj_Key,
                                                 com.intersys.objects.Database.RET_PRIM,
                                                 "Key");
-       return dh.getString();
+       return dh.getBytes();
     }
 
     /**
        Sets new value for <code>Key</code>.
        <Description>
        @param value new value to be set represented as
-       <code>java.lang.String</code>.
+       <code>byte[]</code>.
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#Key"> Key</A>
     */
-    public void setKey(java.lang.String value)  throws com.intersys.objects.CacheException {
+    public void setKey(byte[] value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
         mInternal.setProperty(ii_Key, jj_Key,kk_Key, com.intersys.objects.Database.RET_PRIM, "Key", dh);
         return;
     }
 
-    private static int ii_Person = 6;
+    private static int ii_Person = 7;
     private static int jj_Person = 0;
-    private static int kk_Person = 6;
+    private static int kk_Person = 7;
     /**
        Verifies that indexes for property <code>Person</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -1210,6 +1265,46 @@ after the index filing is completed.
         return;
     }
     /**
+     <p>Runs method CypherAlgorithmDisplayToLogical in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param _val represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#CypherAlgorithmDisplayToLogical"> Method CypherAlgorithmDisplayToLogical</A>
+    */
+    public static java.lang.String CypherAlgorithmDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(_val);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CypherAlgorithmDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getString();
+    }
+    /**
+     <p>Runs method CypherAlgorithmIsValid in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param _val represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#CypherAlgorithmIsValid"> Method CypherAlgorithmIsValid</A>
+    */
+    public static void CypherAlgorithmIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(_val);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CypherAlgorithmIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        db.parseStatus(res);
+        return;
+    }
+    /**
+     <p>Runs method CypherAlgorithmLogicalToDisplay in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param _val represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#CypherAlgorithmLogicalToDisplay"> Method CypherAlgorithmLogicalToDisplay</A>
+    */
+    public static java.lang.String CypherAlgorithmLogicalToDisplay (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(_val);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CypherAlgorithmLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getString();
+    }
+    /**
      <p>Runs method HashDisplayToLogical in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
@@ -1377,19 +1472,6 @@ after the index filing is completed.
         return (Signature.Signature)(cobj.newJavaInstance());
     }
     /**
-     <p>Runs method KeyDisplayToLogical in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#KeyDisplayToLogical"> Method KeyDisplayToLogical</A>
-    */
-    public static java.lang.String KeyDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"KeyDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
      <p>Runs method KeyIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
@@ -1402,19 +1484,6 @@ after the index filing is completed.
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"KeyIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
-    }
-    /**
-     <p>Runs method KeyLogicalToDisplay in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=TPCS&CLASSNAME=Signature.Signature#KeyLogicalToDisplay"> Method KeyLogicalToDisplay</A>
-    */
-    public static java.lang.String KeyLogicalToDisplay (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"KeyLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
     }
     /**
      <p>Runs method PersonGetObject in Cache.</p>
@@ -1752,7 +1821,7 @@ them in the database.
         return new com.intersys.objects.CacheQuery(db, "Signature.Signature_Extent", 0, 0);
     }
 
-    public static Object addToBatchInsert (Object batch, java.sql.Connection con, String cos_Hash, String cos_Key, Integer cos_Person) throws java.sql.SQLException {
+    public static Object addToBatchInsert (Object batch, java.sql.Connection con, String cos_CypherAlgorithm, String cos_Hash, byte[] cos_Key, Integer cos_Person) throws java.sql.SQLException {
         if (batch == null) {
             com.intersys.jdbc.CacheConnection c = null;
             if (con != null) {
@@ -1765,9 +1834,10 @@ them in the database.
             batch = new com.intersys.jdbc.QuickStatement.Batch (c.getConnectionInfo ());
         }
         com.intersys.jdbc.QuickStatement.Batch qbatch = (com.intersys.jdbc.QuickStatement.Batch) batch;
-        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 4); // number of columns
+        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 5); // number of columns
+        com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_CypherAlgorithm);
         com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_Hash);
-        com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_Key);
+        com.intersys.jdbc.SysListProxy.setByte(qbatch.list, cos_Key);
         com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_Person);
         com.intersys.jdbc.SysListProxy.setUndefined(qbatch.list); // for x__classname
         qbatch.flushRecord ();

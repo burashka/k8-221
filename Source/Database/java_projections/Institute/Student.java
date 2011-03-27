@@ -8,7 +8,7 @@ package Institute;
 **/
 
 public class Student extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 1664;
+    private static final long serialVersionUID = 4027;
     private static String CACHE_CLASS_NAME = "Institute.Student";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

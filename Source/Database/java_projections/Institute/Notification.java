@@ -8,7 +8,7 @@ package Institute;
 **/
 
 public class Notification extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 1709;
+    private static final long serialVersionUID = 6601;
     private static String CACHE_CLASS_NAME = "Institute.Notification";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

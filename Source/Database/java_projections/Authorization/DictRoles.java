@@ -8,7 +8,7 @@ package Authorization;
 **/
 
 public class DictRoles extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 446;
+    private static final long serialVersionUID = 6414;
     private static String CACHE_CLASS_NAME = "Authorization.DictRoles";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
