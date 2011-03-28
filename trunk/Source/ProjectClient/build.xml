@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="deploy" name="project">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
+	<property name="project.dir" value="." />
+	<property name="com.unislabs.pm.dependenses.location" value="../com.unislabs.pm.dependenses" />
+	<property name="build.dir" value="${project.dir}/build" />
+	<property name="web.dir" value="${project.dir}/WebContent" />
+	<property name="warfile" value="${build.dir}/project.war" />
+	<property name="package.file.jar" value="${build.dir}/project.jar" />
+	<property name="package.file.zip" value="${build.dir}/project.zip" />
+
+	<property name="TOMCAT_HOME" value="C:\Users\1\Desktop\TOMCAT6" />
+
+	<path id="Apache Tomcat v6.0">
+		<pathelement location="${TOMCAT_HOME}/lib/annotations-api.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/catalina-ant.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/catalina-ha.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/catalina-tribes.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/catalina.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/el-api.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/jasper-el.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/jasper-jdt.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/jasper.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/jsp-api.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/servlet-api.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/tomcat-coyote.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/tomcat-dbcp.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/tomcat-i18n-es.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/tomcat-i18n-fr.jar" />
+		<pathelement location="${TOMCAT_HOME}/lib/tomcat-i18n-ja.jar" />
+	</path>
+	<path id="com.unislabs.pm.dependenses.classpath">
+		<pathelement location="${com.unislabs.pm.dependenses.location}/lib" />
+	</path>
+	<path id="Web App Libraries">
+		<pathelement location="WebContent/WEB-INF/lib/richfaces-api-3.3.3.Final.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/richfaces-impl-3.3.3.Final.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/richfaces-ui-3.3.3.Final.jar" />
+	</path>
+	<path id="project.classpath">
+		<pathelement location="build/classes" />
+		<path refid="Apache Tomcat v6.0" />
+		<path refid="EAR Libraries.libraryclasspath" />
+		<path refid="Web App Libraries" />
+		<path refid="com.unislabs.pm.dependenses.classpath" />
+	</path>
+	<target name="init">
+		<mkdir dir="build/classes" />
+		<copy includeemptydirs="false" todir="build/classes">
+			<fileset dir="src">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="build/classes" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects" />
+
+	<target name="package-jar" depends="build">
+		<delete file="${package.file.jar}" />
+		<jar destfile="${package.file.jar}">
+			<fileset dir="${build.dir}" excludes="*.zip" />
+		</jar>
+	</target>
+
+	<target name="package-extension" depends="package-jar">
+		<delete file="${package.file.zip}" />
+		<zip destfile="${package.file.zip}">
+			<zipfileset file="${package.file.jar}" prefix="WEB-INF/lib" />
+			<zipfileset dir="${web.dir}" />
+		</zip>
+	</target>
+
+	<target name="create-war" depends="package-extension">
+		<zip destfile="${warfile}">
+			<zipfileset file="${package.file.jar}" prefix="WEB-INF/lib" />
+			<zipfileset dir="${web.dir}" />
+			<zipfileset dir="${com.unislabs.pm.dependenses.location}/lib" prefix="WEB-INF/lib" />
+			<zipfileset dir="${build.dir}/classes" prefix="WEB-INF/classes" />
+		</zip>
+	</target>
+
+	<target name="deploy" depends="create-war">
+		<!--
+		<exec dir="${TOMCAT_HOME}" executable="${TOMCAT_HOME}/bin/shutdown.bat" />
+		-->
+		<delete dir="${TOMCAT_HOME}/webapps/project" />
+		<delete file="${TOMCAT_HOME}/webapps/${warfile}">
+		</delete>
+		<copy file="${warfile}" todir="${TOMCAT_HOME}/webapps" />
+		<!--
+		<waitfor maxwait="10" maxwaitunit="second" checkevery="5" checkeveryunit="second" timeoutproperty="noserverfound">
+			<socket port="8080" server="localhost" />
+		</waitfor>
+		<exec dir="${TOMCAT_HOME}" executable="${TOMCAT_HOME}/bin/startup.bat" />
+		-->
+		<delete>
+			<fileset dir="${build.dir}" includes="*" />
+		</delete>
+
+	</target>
+</project>
