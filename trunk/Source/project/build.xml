@@ -5,7 +5,7 @@
 	<property name="target" value="1.6" />
 	<property name="source" value="1.6" />
 	<property name="project.dir" value="." />
-	<property name="com.unislabs.pm.dependenses.location" value="../com.unislabs.pm.dependenses" />
+	<property name="project.dependenses.location" value="../project.dependenses" />
 	<property name="build.dir" value="${project.dir}/build" />
 	<property name="web.dir" value="${project.dir}/WebContent" />
 	<property name="warfile" value="${build.dir}/project.war" />
@@ -32,8 +32,8 @@
 		<pathelement location="${TOMCAT_HOME}/lib/tomcat-i18n-fr.jar" />
 		<pathelement location="${TOMCAT_HOME}/lib/tomcat-i18n-ja.jar" />
 	</path>
-	<path id="com.unislabs.pm.dependenses.classpath">
-		<pathelement location="${com.unislabs.pm.dependenses.location}/lib" />
+	<path id="project.dependenses.classpath">
+		<pathelement location="${project.dependenses.location}/lib" />
 	</path>
 	<path id="Web App Libraries">
 		<pathelement location="WebContent/WEB-INF/lib/richfaces-api-3.3.3.Final.jar" />
@@ -45,7 +45,7 @@
 		<path refid="Apache Tomcat v6.0" />
 		<path refid="EAR Libraries.libraryclasspath" />
 		<path refid="Web App Libraries" />
-		<path refid="com.unislabs.pm.dependenses.classpath" />
+		<path refid="project.dependenses.classpath" />
 	</path>
 	<target name="init">
 		<mkdir dir="build/classes" />
@@ -90,7 +90,7 @@
 		<zip destfile="${warfile}">
 			<zipfileset file="${package.file.jar}" prefix="WEB-INF/lib" />
 			<zipfileset dir="${web.dir}" />
-			<zipfileset dir="${com.unislabs.pm.dependenses.location}/lib" prefix="WEB-INF/lib" />
+			<zipfileset dir="${project.dependenses.location}/lib" prefix="WEB-INF/lib" />
 			<zipfileset dir="${build.dir}/classes" prefix="WEB-INF/classes" />
 		</zip>
 	</target>
