@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+	<!-- Settings for application -->
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		<locale-config>
+			<default-locale>ru</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>ru</supported-locale>
+		</locale-config>
+		  <resource-bundle>
+            <base-name>project.util.Messages</base-name>
+            <var>messages</var>
+        </resource-bundle>
+        <message-bundle>project.util.Messages</message-bundle>
+	</application>
+
+	<converter>
+		<converter-id>bmRangeConverter</converter-id>
+		<converter-class>javax.faces.convert.IntegerConverter</converter-class>
+	</converter>
+	<managed-bean>
+		<managed-bean-name>userBean</managed-bean-name>
+		<managed-bean-class>project.starter.User</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>ui/login.xhtml</display-name>
+		<from-view-id>/ui/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/ui/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<validator>
+		<display-name>nameValidate</display-name>
+		<validator-id>nameValidate</validator-id>
+		<validator-class>com.unislabs.pm.portfolio.PortfolioValidate</validator-class>
+	</validator>
+	 <validator>
+		<display-name>opdieditnameValidator</display-name>
+    	<validator-id>opdieditnameValidator</validator-id>
+    	<validator-class>com.unislabs.pm.validtors.OPDIeditnameValidator</validator-class>
+	</validator>
+
+<!--
+	<managed-bean>
+		<managed-bean-name>valid</managed-bean-name>
+		<managed-bean-class>com.unislabs.pm.validtors.OPDIeditnameValidator</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	-->
+</faces-config>

@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+ "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</property>
+
+		<!-- core mapping -->
+		<mapping class="com.unislabs.pm.core.PMObject" />
+		<mapping class="com.unislabs.pm.core.Assoc" />
+		<mapping class="com.unislabs.pm.core.Property" />
+
+		<!-- user package mapping -->
+		<mapping class="com.unislabs.pm.user.User" />
+
+		<class-cache class="com.unislabs.pm.core.PMObject" usage="read-write" />
+		<class-cache class="com.unislabs.pm.core.Assoc" usage="read-write" />
+		<class-cache class="com.unislabs.pm.core.Property" usage="read-write" />
+
+	</session-factory>
+</hibernate-configuration>

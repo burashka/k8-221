@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+	<ui:decorate template="../template/content.xhtml">
+		<ui:define name="body">
+
+			<p:panel id="tree" header="Tree">
+				<div id="portfolioTreeRaphael" style="height: 600px;"><script
+					type="text/javascript">
+					
+									
+				
+	function createTarget(name, x, y) {
+		var target = new Object();
+		target.name = name;
+		target.x = x;
+		target.y = y;
+		return target;
+	}
+
+	var height = 300;
+	var width = 400;
+	
+	/* add a node with a customized label */
+	
+	var g = new Graph();
+
+	var t1 = createTarget("Target 1", 100, 100);
+	var t2 = createTarget("Target 2", 150, 150);
+	var t3 = createTarget("Target 3", 50, 150);
+	
+	//alert(t1.x + ":"+t1.y);
+	
+	var renderer = function(r, n) {
+			n.point[0] = n.x;
+			n.point[1] = n.y;
+			
+			
+			var text=r.text(n.point[0], n.point[1], n.label).attr({"font-size":"12px"});
+			
+				
+            /* the Raphael set is obligatory, containing all you want to display */
+            var set = r.set().push(
+                /* custom objects go here */
+			    r.rect(text.getBBox().x-5, text.getBBox().y-5, text.getBBox().width+10, text.getBBox().height+10).attr({"fill": "#fa8", "stroke-width": 2, r : "9px"})).push(text);
+            /* custom tooltip attached to the set */
+            set.items.forEach(function(el) {el.tooltip(r.rect(0, 0, 10, 10).attr({"fill": "#fec", "stroke-width": 1, r : "9px"}))});
+  //          set.tooltip(r.set().push(r.rect(0, 0, 30, 30).attr({"fill": "#fec", "stroke-width": 1, r : "9px"})).hide());
+            return set;
+        };
+		
+	g.addNode(t1.name, {x:t1.x, y:t1.y, label : t1.name, render : renderer});
+			
+	g.addNode(t2.name, {x:t2.x, y:t2.y, label : t2.name, render : renderer});
+	
+	g.addNode(t3.name, {x:t3.x, y:t3.y, label : t3.name, render : renderer});
+	
+	g.addEdge(t1.name, t2.name);
+	g.addEdge(t1.name, t3.name);
+		
+
+	/* layout the graph using the Spring layout implementation */
+	var layouter = new Graph.Layout.Spring(g);
+	layouter.layout();
+
+	/* draw the graph using the RaphaelJS draw implementation */
+	var renderer = new Graph.Renderer.Raphael(document
+			.getElementById("portfolioTreeRaphael"), g, width, height);
+	renderer.draw();
+
+	var redraw = function() {
+		layouter.layout();
+		renderer.draw();
+		};
+	
+		
+</script></div>
+			</p:panel>
+
+		</ui:define>
+	</ui:decorate>
+
+</ui:composition>
