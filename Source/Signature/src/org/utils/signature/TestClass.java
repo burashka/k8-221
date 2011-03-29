@@ -9,16 +9,22 @@ public class TestClass {
 		try {
 			GenerateKeys keys = new GenerateKeys("RSA");
 			GenerateKeys keys2 = new GenerateKeys("DSA");
+			byte[] temp = new SignatureContainer("SHA1", "RSA",
+					keys.getPrivateKeyToString()).genCertificateByte();
+			for (int i = 0; i < temp.length; i++) {
+				System.out.print((char) temp[i]);
+			}
+
 			byte[] arr = Signing.sign(new SignatureContainer("SHA1", "RSA",
 					keys.getPrivateKeyToString()), strToSign);
 			result = Validating.validate(new CertificateContainer("SHA1",
 					"RSA", keys.getPublicKeyToString()), strToSign, arr);
 		} catch (Exception e) {
-			result=false;
+			result = false;
 			e.printStackTrace();
-		} 
-		
-			System.out.println(result ? "Подпись валидна" : "Ошибка подписи");
-		
+		}
+
+		// System.out.println(result ? "Подпись валидна" : "Ошибка подписи");
+
 	}
 }
