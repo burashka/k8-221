@@ -51,5 +51,41 @@ public class SignatureContainer {
 	public PrivateKey getKey() {
 		return this.privateKey[0];
 	}
+	
+	public byte[] genCertificateByte() {
+		byte[] temp = "\n".getBytes();
+		byte[] algByte = this.idAlg.getBytes();
+		byte[] hashByte = this.idHash.getBytes();
+		byte[] out = new byte[algByte.length+hashByte.length+privateKey[0].getEncoded().length+2*temp.length];
+		int base=0;
+		
+		for (int i=0; i<algByte.length;i++) {
+			out[i]=algByte[i];
+		}
+		base=algByte.length;
+		
+		for (int i=0;i<temp.length;i++) {
+			out[i+base]=temp[i];
+		}
+		base+=temp.length;
+		
+		for (int i=0; i<hashByte.length;i++) {
+			out[i+base]=hashByte[i];
+		}
+		
+		base+=hashByte.length;
+		
+		for (int i=0; i<temp.length;i++) {
+			out[i+base]=temp[i];
+		}
+		
+		base+=temp.length;
+		
+		for (int i=0; i<privateKey[0].getEncoded().length;i++) {
+			out[i+base]=privateKey[0].getEncoded()[i];
+		}
+		
+		return out;
+	}
 
 }
