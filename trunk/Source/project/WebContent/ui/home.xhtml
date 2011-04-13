@@ -51,7 +51,8 @@
 		<table width="100%">
 			<tbody>
 				<tr>
-					<td align="left"><h:outputLabel style="font-style:oblique; font-size: 200%;">Проект: проект</h:outputLabel>
+					<td align="left"><h:outputLabel
+							style="font-style:oblique; font-size: 200%;">Проект: проект</h:outputLabel>
 					</td>
 				</tr>
 			</tbody>
@@ -60,51 +61,62 @@
 
 	<ui:define name="menu1">
 		<table width="100%">
-		<tbody>
+			<tbody>
 				<tr>
-				<td align="left" >
-		<h:form prependId="false">
-			<p:menubar>
-				<p:submenu label="Меню">
-					<p:menuitem value="Создать"
-						 />
-					<p:menuitem value="Редактировать"
-						 />
-					<p:menuitem value="Удалить"
-						 />
-				</p:submenu>
-			</p:menubar>
-			
-		</h:form>
-		</td>
-		</tr>
-		</tbody>
-		</table>
-		</ui:define>
-		
-		<ui:define name="menu2">
-		<table width="100%">
-		<tbody>
-		<tr>
-		<td align="left" >
-		<h:form prependId="false">
-			<p:menubar>
-				<p:submenu label="Проект">
-					<p:menuitem value="Создать"
-						/>
-						
-					<p:menuitem value="Редактировать"
-						/>
-					
-					<p:menuitem value="Удалить"
-						/>
-						</p:submenu>
-						</p:menubar>
+					<td align="left"><h:form prependId="false">
+							<p:menubar>
+								<p:submenu label="Меню">
+									<p:menuitem value="Создать" />
+									<p:menuitem value="Редактировать" />
+									<p:menuitem value="Удалить" />
+								</p:submenu>
+							</p:menubar>
+
 						</h:form>
-		</td>
-		</tr>
-		</tbody>
-		
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ui:define>
+
+	<ui:define name="menu2">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td align="left"><h:form prependId="false">
+							<p:menubar>
+								<p:submenu label="Проект">
+									<p:menuitem value="Создать" />
+
+									<p:menuitem value="Редактировать" />
+
+									<p:menuitem value="Удалить" />
+								</p:submenu>
+								<p:submenu label="Документы">
+									<p:menuitem value="Создание документа" />
+
+									<p:menuitem value="Просмотр документа" />
+
+									<p:menuitem value="Документы на подпись" action="click" />
+								</p:submenu>
+								<p:submenu label="Шаблоны документов">
+									<p:menuitem value="Создание шаблона документа" />
+
+									<p:menuitem value="Просмотр шаблона документа" />
+
+								</p:submenu>
+								<p:submenu label="Электронная подпись">
+									<p:menuitem value="Сгенерировать ключ" action="clickGenKey" />
+
+									<p:menuitem value="Сообщить о неполадках" />
+
+								</p:submenu>
+							</p:menubar>
+						</h:form>
+					</td>
+				</tr>
+			</tbody>
+
 		</table>
 	</ui:define>
 	<ui:define name="sidebar">
@@ -115,8 +127,10 @@
 				</h:form>
 			</p:tab>
 			<p:tab title="Настройка">
-				<div id="setupConfigMenu"><h:form>
-				</h:form></div>
+				<div id="setupConfigMenu">
+					<h:form>
+					</h:form>
+				</div>
 			</p:tab>
 		</p:accordionPanel>
 	</ui:define>
