@@ -1,0 +1,154 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/ui.xhtml">
+
+	<ui:define name="head">
+		<style type="text/css">
+.portfolioTreeStyle {
+	background: transparent url(../images/portfolio.png) no-repeat;
+	padding-left: 20px;
+	padding-top: 1px;
+	margin-left: 3px;
+}
+
+.portfolioTreeStyle-selected {
+	background: #D4E4FC url(../images/portfolio.png) no-repeat;
+	padding-left: 20px;
+	padding-top: 1px;
+	border: 3px solid #D4E4FC;
+}
+
+.projectListStyle {
+	position: absolute;
+	text-align: center;
+	width: 100px;
+	margin-left: 1px;
+}
+
+.projectListStyle-selected {
+	position: absolute;
+	text-align: center;
+	width: 100px;
+	border: 1px solid SkyBlue;
+}
+
+.panelProjectScroll {
+	-moz-border-radius: 0 0 0 0;
+	height: 500px;
+	margin-top: 0px;
+	overflow: auto;
+	padding-left: 0;
+	padding-right: 0;
+	width: 99%;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="logo">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td align="left"><h:outputLabel
+							style="font-style:oblique; font-size: 200%;">Проект: проект</h:outputLabel>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ui:define>
+
+	<ui:define name="menu1">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td align="left"><h:form prependId="false">
+							<p:menubar>
+								<p:submenu label="Меню">
+									<p:menuitem value="Создать" />
+									<p:menuitem value="Редактировать" />
+									<p:menuitem value="Удалить" />
+								</p:submenu>
+							</p:menubar>
+
+						</h:form></td>
+				</tr>
+			</tbody>
+		</table>
+	</ui:define>
+
+	<ui:define name="menu2">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td align="left"><h:form prependId="false">
+							<p:menubar>
+								<p:submenu label="Проект">
+									<p:menuitem value="Создать" />
+
+									<p:menuitem value="Редактировать" />
+
+									<p:menuitem value="Удалить" />
+								</p:submenu>
+
+								<p:submenu label="Документы">
+									<p:menuitem value="Создать документ" />
+									<p:menuitem value="Просмотр документа" />
+								</p:submenu>
+								<p:submenu label="Шаблоны документов">
+									<p:menuitem value="Создать шаблон документа" />
+									<p:menuitem value="Просмотр шаблона документа" />
+								</p:submenu>
+								<p:submenu label="Электронная подпись">
+									<p:menuitem value="Сгенерировать ключ" action="clickGenKey" />
+									<p:menuitem value="Сообщить о неполадках" />
+								</p:submenu>
+
+							</p:menubar>
+						</h:form></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</ui:define>
+	<ui:define name="sidebar">
+		<p:accordionPanel id="mainSidebar">
+			<p:tab title="Ученики">
+				<h:form id="portfolioListForm" prependId="false">
+					<div style="height: 400px; padding-top: 1px;"></div>
+				</h:form>
+			</p:tab>
+			<p:tab title="Настройка">
+				<div id="setupConfigMenu">
+					<h:form>
+					</h:form>
+				</div>
+			</p:tab>
+		</p:accordionPanel>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="contentArea" prependId="false">
+			<ui:include src="#{contentController.centerSrc}" />
+			<h:form prependId="false">
+				<table border="1px">
+					<tr>
+						<td><h:commandLink>
+								<h:outputText value="1. Объяснительная от Иванова И.И."></h:outputText>
+							</h:commandLink> <p:commandButton id="button" value="Подписать" type="submit"
+								action="clickUpload"></p:commandButton></td>
+					</tr>
+					<tr>
+						<td><h:commandLink>
+								<h:outputText value="2. Объяснительная от Петрова И.И."></h:outputText>
+							</h:commandLink> <p:commandButton id="button2" value="Подписать" type="submit"
+								action="clickUpload"></p:commandButton>
+						</td>
+					</tr>
+				</table>
+			</h:form>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

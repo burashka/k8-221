@@ -170,4 +170,26 @@
 		<filter-name>Character Encoding Filter</filter-name>
 		<servlet-name>Comet Servlet</servlet-name>
 	</filter-mapping>
+
+	<display-name>serlvetdemo</display-name>
+
+	<servlet>
+		<servlet-name>GenerateKeyFileServlet</servlet-name>
+		<servlet-class>project.signature.GenerateKeyFileServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GenerateKeyFileServlet</servlet-name>
+		<url-pattern>/GenerateKeyFileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UploadKeyFileServlet</servlet-name>
+		<servlet-class>project.signature.UploadKeyFileServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UploadKeyFileServlet</servlet-name>
+		<url-pattern>/UploadKeyFileServlet</url-pattern>
+	</servlet-mapping>
+
 </web-app>

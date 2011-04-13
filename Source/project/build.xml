@@ -5,14 +5,14 @@
 	<property name="target" value="1.6" />
 	<property name="source" value="1.6" />
 	<property name="project.dir" value="." />
-	<property name="project.dependenses.location" value="../project.dependenses" />
+	<property name="project.dependenses.location" value="K:\учеба\8 семестр\ТПКС\k8-221\Source\project.dependeces" />
 	<property name="build.dir" value="${project.dir}/build" />
 	<property name="web.dir" value="${project.dir}/WebContent" />
 	<property name="warfile" value="${build.dir}/project.war" />
 	<property name="package.file.jar" value="${build.dir}/project.jar" />
 	<property name="package.file.zip" value="${build.dir}/project.zip" />
 
-	<property name="TOMCAT_HOME" value="C:\Users\1\Desktop\TOMCAT6" />
+	<property name="TOMCAT_HOME" value="K:\Program Files\TOMCAT6" />
 
 	<path id="Apache Tomcat v6.0">
 		<pathelement location="${TOMCAT_HOME}/lib/annotations-api.jar" />
