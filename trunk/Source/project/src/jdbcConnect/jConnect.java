@@ -1,6 +1,7 @@
 package jdbcConnect;
 
 import java.sql.*;
+
 import com.intersys.jdbc.CacheConnectionPoolDataSource;
 
 public class jConnect {
@@ -69,7 +70,12 @@ public class jConnect {
 		CloseDBConnection();
  	}*/
     
-    private final void CloseDBConnection() throws SQLException{
+    private void setPoolCounter(int poolCount) {
+		PoolCounter=poolCount;
+		
+	}
+
+	private final void CloseDBConnection() throws SQLException{
     	dbconnection.close();
     }
     
