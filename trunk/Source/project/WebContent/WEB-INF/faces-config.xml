@@ -7,27 +7,12 @@
 	<!-- Settings for application -->
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
-		<locale-config>
-			<default-locale>ru</default-locale>
-			<supported-locale>en</supported-locale>
-			<supported-locale>ru</supported-locale>
-		</locale-config>
-		  <resource-bundle>
-            <base-name>project.util.Messages</base-name>
-            <var>messages</var>
-        </resource-bundle>
-        <message-bundle>project.util.Messages</message-bundle>
 	</application>
 
 	<converter>
 		<converter-id>bmRangeConverter</converter-id>
 		<converter-class>javax.faces.convert.IntegerConverter</converter-class>
 	</converter>
-	<managed-bean>
-		<managed-bean-name>userBean</managed-bean-name>
-		<managed-bean-class>project.starter.User</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 	<navigation-rule>
 		<display-name>ui/login.xhtml</display-name>
 		<from-view-id>/ui/login.xhtml</from-view-id>
