@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "USER", schema = "users")
-@SequenceGenerator(name = "users.USER_sequence", sequenceName = "users.USER_sequence_id_seq")
+@Table(name = "\"user\"", schema = "\"authorization\"")
+//@SequenceGenerator(name = "users.USER_sequence", sequenceName = "users.USER_sequence_id_seq")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
@@ -29,7 +29,7 @@ public class User implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users.USER_sequence")
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users.USER_sequence")
 	public int getId() {
 		return id;
 	}
@@ -38,7 +38,7 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "NAME", nullable = false, unique = true)
+	@Column(name = "Login", nullable = false, unique = true)
 	public String getName() {
 		return name;
 	}
@@ -48,7 +48,7 @@ public class User implements Serializable {
 	}
 
 
-	@Column(name = "PASSWORD", nullable = false, unique = false)
+	@Column(name = "Password", nullable = false, unique = false)
 	public String getPassword() {
 		return password;
 	}
