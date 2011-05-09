@@ -12,9 +12,7 @@
 		<ui:define name="body">
 			<p:panel>
    					 
-			    <p:commandButton value="Сгенерировать новую пару ключей" 
-			    action="{contentController.changePage('/ui/main.xhtml')}"
-			    update="@none" oncomplete="#updateCenter()"/>
+			    <p:commandButton value="Сгенерировать новую пару ключей" update="@none" oncomplete="#{contentController.changePage('/ui/main.xhtml')}; updateCenter()"/>
 				<p:remoteCommand name="updateCenter" process="@none"
 					update="contentArea" />
 			</p:panel>
