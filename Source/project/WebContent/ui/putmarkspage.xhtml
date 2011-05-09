@@ -27,7 +27,8 @@
 				        </p:column>  
 			    </p:dataTable>  
 			    <p:commandButton value="Сохранить" update="@none"
-			    action="#{contentController.changePage('/ui/marks3.xhtml')}" 
+			    action="#{contentController.changePage('/ui/marks3.xhtml')}"
+			    actionListener="#{marksBean.saveMarks}"
 			    oncomplete="updateCenter()"/>
 				<p:remoteCommand name="updateCenter" process="@none"
 					update="contentArea" />
