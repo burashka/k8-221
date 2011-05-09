@@ -78,7 +78,8 @@
 		</table>
 	</ui:define>
 
-	<ui:define name="menu2">
+	 <ui:define name="menu2">
+	 
 		<table width="100%">
 			<tbody>
 				<tr>
@@ -117,32 +118,86 @@
 			</tbody>
 
 		</table>
+		
 	</ui:define>
 	<ui:define name="sidebar">
 		<p:accordionPanel id="mainSidebar">
-			<p:tab title="Ученики">
-				<h:form id="portfolioListForm" prependId="false">
-					<div style="height: 400px; padding-top: 1px;"></div>
+			<p:tab title="Шаблоны документов">
+				<div id="p3"><h:form>
+					<h:panelGrid columns="1" border="0">
+					<p:commandLink action="#{contentController.changePage('/ui/templatecreationpage.xhtml')}"
+							oncomplete="updateCenter()" update="@none">
+							<h:outputText value="Создание шаблона" />
+					</p:commandLink>
+					</h:panelGrid>
+					<p:remoteCommand name="updateCenter" process="@none"
+						update="contentArea" />
+				</h:form> </div>
+			</p:tab>
+			<p:tab title="Управление электронной подписью">
+				<div id="p2"><h:form>
+					<h:panelGrid columns="1" border="0">
+					<p:commandLink action="#{contentController.changePage('/ui/keygenerationpage.xhtml')}"
+							oncomplete="updateCenter()" update="@none">
+							<h:outputText value="Сгенерировать пару ключей" />
+					</p:commandLink>
+					</h:panelGrid>
+					<p:remoteCommand name="updateCenter" process="@none"
+						update="contentArea" />
+				</h:form> </div>
+			</p:tab>
+			<p:tab title="Документы на подпись">
+				<h:form id="documentsListForm" prependId="false">
+					<div style="height: 400px; padding-top: 1px;">
+						<p:dataList
+						id="documentsList" value="#{documentsBean.documents}"
+						var="document" type="definition">
+						<p:column>
+							<p:commandLink
+								action="#{documentsBean.setSelected(document)}"
+								update="@form, @none" oncomplete="updateCenter()">
+								<h:outputText
+									value="#{documentsBean.getDocumentName(document)}" />
+							</p:commandLink>
+						</p:column>
+						<f:facet name="description">
+							<h:outputText />
+						</f:facet>
+					</p:dataList></div>
+					<p:remoteCommand name="updateCenter" process="@none"
+						update="contentArea" />
 				</h:form>
 			</p:tab>
-			<p:tab title="Настройка">
-				<div id="setupConfigMenu">
-					<h:form>
-					</h:form>
-				</div>
-			</p:tab>
 			<p:tab title="Выставление оценок">
-				<div id="setupConfigMenu">
-					<h:form>
-					</h:form>
-				</div>
+				<div id="setupConfigMenu"><h:form>
+					<h:panelGrid columns="1" border="0">
+					<p:commandLink action="#{contentController.changePage('/ui/selectmarksprop.xhtml')}"
+							oncomplete="updateCenter()" update="@none">
+							<h:outputText value="Выставление оценок" />
+					</p:commandLink>
+					</h:panelGrid>
+					<p:remoteCommand name="updateCenter" process="@none"
+						update="contentArea" />
+				</h:form> </div>
 			</p:tab>
 		</p:accordionPanel>
 	</ui:define>
 
-	<ui:define name="content">
+	<!-- <ui:define name="content">
 		<h:form id="contentArea" prependId="false">
+		<h:panelGroup id="aggiungiAuto">
+		<h:panelGroup id="aggiungiAuto2">
 			<ui:include src="#{contentController.centerSrc}" />
+		</h:panelGroup>
+		</h:panelGroup>
+		</h:form>
+	</ui:define>-->
+	<ui:define name="content">
+		<h:form  prependId="false">
+		<p:panel id="contentArea"
+			style="border-style: none; padding: 0px 0px 0px 0px; background: none; margin: -6px -18px 0px -7px;">
+			<ui:include src="#{contentController.centerSrc}" />
+		</p:panel>
 		</h:form>
 	</ui:define>
 

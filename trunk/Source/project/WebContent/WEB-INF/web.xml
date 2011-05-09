@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 
-	<display-name>ru.unis.portfolio.manager</display-name>
+	<display-name>project</display-name>
 	<welcome-file-list>
 		<welcome-file>/ui/home.xhtml</welcome-file>
 	</welcome-file-list>
@@ -191,5 +191,11 @@
 		<servlet-name>UploadKeyFileServlet</servlet-name>
 		<url-pattern>/UploadKeyFileServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeDirectoryServlet</servlet-name>
+		<servlet-class>project.util.HomeDirectoryServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
 </web-app>
