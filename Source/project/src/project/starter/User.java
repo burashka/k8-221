@@ -1,8 +1,14 @@
 package project.starter;
 
+import project.dao.UserDAO;
+import project.util.BeanManager;
+
 public class User {
 	private String name;
 	private String password;
+	
+	
+	private UserDAO dao;
 	
 	public String getName() {
 		return name;
@@ -18,12 +24,18 @@ public class User {
 	}
 	
 	public String login(){
-		// Image here a database access to validate the users
-		if (name.equalsIgnoreCase("tester") && password.equalsIgnoreCase("tester")){
+		dao = (UserDAO) BeanManager.findBean("userDAO");
+		dao.findUser(name, password);
+		if(dao != null){
 			return "success";
 		} else {
 			return "failure";
 		}
+		/*if (name.equalsIgnoreCase("tester") && password.equalsIgnoreCase("tester")){
+			return "success";
+		} else {
+			return "failure";
+		}*/
 		
 	}
 	
