@@ -129,4 +129,9 @@ public class MarksBean implements Serializable {
 		public boolean isNeedPageTwoRender() {
 			return needPageTwoRender;
 		}  
+		
+		//Сдесь пишите сохранение через дао ну и остальную логику примерно также
+		public void saveMarks(ActionEvent actionEvent){
+			System.out.println(students.get(0).getMark());
+		}
 }
