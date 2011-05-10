@@ -50,7 +50,7 @@
 
 
 	<!-- USER -->
-	<bean id="userDAOImpl" class="project.dao.autorization.UserDAOImpl">
+	<bean id="userDAOImpl" class="project.dao.authorization.UserDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -75,7 +75,7 @@
 		</property>
 	</bean>
 
-	<bean id="dictRolesDAOImpl" class="project.dao.autorization.DictRolesDAOImpl">
+	<bean id="dictRolesDAOImpl" class="project.dao.authorization.DictRolesDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -100,7 +100,7 @@
 		</property>
 	</bean>
 
-	<bean id="propertiesDAOImpl" class="project.dao.autorization.PropertiesDAOImpl">
+	<bean id="propertiesDAOImpl" class="project.dao.authorization.PropertiesDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -278,7 +278,7 @@
 	</bean>
 
 	<!-- Institute -->
-	<bean id="departmentDAOImpl" class="project.dao.documents.DepartmentDAOImpl">
+	<bean id="departmentDAOImpl" class="project.dao.institute.DepartmentDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -304,7 +304,7 @@
 	</bean>
 
 
-	<bean id="employeeDAOImpl" class="project.dao.documents.EmployeeDAOImpl">
+	<bean id="employeeDAOImpl" class="project.dao.institute.EmployeeDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -329,7 +329,7 @@
 		</property>
 	</bean>
 
-	<bean id="groupDAOImpl" class="project.dao.documents.GroupDAOImpl">
+	<bean id="groupDAOImpl" class="project.dao.institute.GroupDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -354,7 +354,7 @@
 		</property>
 	</bean>
 
-	<bean id="listDAOImpl" class="project.dao.documents.ListDAOImpl">
+	<bean id="listDAOImpl" class="project.dao.institute.ListDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -379,7 +379,7 @@
 		</property>
 	</bean>
 
-	<bean id="notificationDAOImpl" class="project.dao.documents.NotificationDAOImpl">
+	<bean id="notificationDAOImpl" class="project.dao.institute.NotificationDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -404,7 +404,7 @@
 		</property>
 	</bean>
 
-	<bean id="personDAOImpl" class="project.dao.documents.PersonDAOImpl">
+	<bean id="personDAOImpl" class="project.dao.institute.PersonDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -429,7 +429,7 @@
 		</property>
 	</bean>
 
-	<bean id="planDAOImpl" class="project.dao.documents.PlanDAOImpl">
+	<bean id="planDAOImpl" class="project.dao.institute.PlanDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -454,7 +454,7 @@
 		</property>
 	</bean>
 
-	<bean id="progressBookDAOImpl" class="project.dao.documents.ProgressBookDAOImpl">
+	<bean id="progressBookDAOImpl" class="project.dao.institute.ProgressBookDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -479,7 +479,7 @@
 		</property>
 	</bean>
 
-	<bean id="reportsDAOImpl" class="project.dao.documents.ReportsDAOImpl">
+	<bean id="reportsDAOImpl" class="project.dao.institute.ReportsDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -504,7 +504,7 @@
 		</property>
 	</bean>
 
-	<bean id="specialityDAOImpl" class="project.dao.documents.SpecialityDAOImpl">
+	<bean id="specialityDAOImpl" class="project.dao.institute.SpecialityDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -529,7 +529,7 @@
 		</property>
 	</bean>
 
-	<bean id="studentDAOImpl" class="project.dao.documents.StudentDAOImpl">
+	<bean id="studentDAOImpl" class="project.dao.institute.StudentDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -554,7 +554,7 @@
 		</property>
 	</bean>
 
-	<bean id="studentsDAOImpl" class="project.dao.documents.StudentsDAOImpl">
+	<bean id="studentsDAOImpl" class="project.dao.institute.StudentsDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -579,7 +579,7 @@
 		</property>
 	</bean>
 
-	<bean id="subjectDAOImpl" class="project.dao.documents.SubjectDAOImpl">
+	<bean id="subjectDAOImpl" class="project.dao.institute.SubjectDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -604,7 +604,7 @@
 		</property>
 	</bean>
 
-	<bean id="subjectSpecialityDAOImpl" class="project.dao.documents.SubjectSpecialityDAOImpl">
+	<bean id="subjectSpecialityDAOImpl" class="project.dao.institute.SubjectSpecialityDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -629,7 +629,7 @@
 		</property>
 	</bean>
 
-	<bean id="teacherDAOImpl" class="project.dao.documents.TeacherDAOImpl">
+	<bean id="teacherDAOImpl" class="project.dao.institute.TeacherDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
@@ -654,7 +654,7 @@
 		</property>
 	</bean>
 
-	<bean id="teacherSubjectsDAOImpl" class="project.dao.documents.TeacherSubjectsDAOImpl">
+	<bean id="teacherSubjectsDAOImpl" class="project.dao.institute.TeacherSubjectsDAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
