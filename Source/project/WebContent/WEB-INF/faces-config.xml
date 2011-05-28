@@ -13,6 +13,11 @@
 		<converter-id>bmRangeConverter</converter-id>
 		<converter-class>javax.faces.convert.IntegerConverter</converter-class>
 	</converter>
+	<managed-bean>
+		<managed-bean-name>fileUploadController</managed-bean-name>
+		<managed-bean-class>project.util.FileUploadController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<!-- <managed-bean>
 		<managed-bean-name>contentController</managed-bean-name>
 		<managed-bean-class>project.util.ContentController</managed-bean-class>

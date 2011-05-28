@@ -2,6 +2,7 @@ package project.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -11,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ManagedBean(name = "fileUploadController")
-@ViewScoped
+@SessionScoped
 public class FileUploadController {
 
 	public void handleFileUpload(FileUploadEvent event) {
