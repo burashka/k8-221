@@ -157,7 +157,7 @@
 								action="#{documentsBean.setSelected(document)}"
 								update="@form, @none" oncomplete="updateCenter()">
 								<h:outputText
-									value="#{documentsBean.getDocumentName(document)}" />
+									value="#{document.number}" />
 							</p:commandLink>
 						</p:column>
 						<f:facet name="description">
@@ -167,12 +167,12 @@
 					<p:remoteCommand name="updateCenter" process="@none"
 						update="contentArea" />
 				</h:form>
-			</p:tab>
+			</p:tab> 
 			<p:tab title="Выставление оценок">
 				<div id="setupConfigMenu"><h:form>
 					<h:panelGrid columns="1" border="0">
 					<p:commandLink action="#{contentController.changePage('/ui/selectmarksprop.xhtml')}"
-							oncomplete="updateCenter()" update="@none">
+							oncomplete="#{contentController.changePage('/ui/selectmarksprop.xhtml')}; updateCenter()" update="@none">
 							<h:outputText value="Выставление оценок" />
 					</p:commandLink>
 					</h:panelGrid>
