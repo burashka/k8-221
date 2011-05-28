@@ -14,7 +14,10 @@
    				
 				
 			    <p:commandButton value="Подписать" update="@none"
-					action="#{contentController.changePage('/ui/main.xhtml')}"			    
+					action="#{contentController.changePage('/ui/uploadkeyfile.xhtml')}"			    
+			     oncomplete="updateCenter()"/>
+			     <p:commandButton value="Сообщить о неполадках" update="@none"
+					action="#{contentController.changePage('/ui/errormessage.xhtml')}"			    
 			     oncomplete="updateCenter()"/>
 				<p:remoteCommand name="updateCenter" process="@none"
 					update="contentArea" />

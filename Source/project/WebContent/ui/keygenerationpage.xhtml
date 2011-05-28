@@ -11,8 +11,12 @@
 
 		<ui:define name="body">
 			<p:panel>
-   					 
-			    <p:commandButton value="Сгенерировать новую пару ключей" update="@none" oncomplete="#{contentController.changePage('/ui/main.xhtml')}; updateCenter()"/>
+
+				<!-- <p:commandButton value="Сгенерировать новую пару ключей" action="updateCenter()"/> -->
+				<p:commandButton value="Download" ajax="false">
+					<p:fileDownload
+						value="#{fileDownloadController.file}" />
+				</p:commandButton>
 				<p:remoteCommand name="updateCenter" process="@none"
 					update="contentArea" />
 			</p:panel>
