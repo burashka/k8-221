@@ -11,7 +11,7 @@
 
 
 		<!-- user package mapping -->
-		<mapping class="project.entities.User" />
+		<mapping class="project.entities.authorization.User" />
 
 	</session-factory>
 </hibernate-configuration>
