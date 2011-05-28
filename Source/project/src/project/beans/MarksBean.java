@@ -100,7 +100,7 @@ public class MarksBean implements Serializable {
 	        return selectedSubject;  
 	  }  
 	  public void setSelectedSubject(Subject selectedSubject) {  
-	        this.selectedSubject = selectedSubject;  
+	        this.selectedSubject = selectedSubject; 
 	  }  
 	  	//Метод для предоставления подсказок в одной из разновидностей подсказывающих боксов http://www.primefaces.org/showcase/ui/autoCompletePojo.jsf
 	    public List<Subject> completeSubject(String query) {  

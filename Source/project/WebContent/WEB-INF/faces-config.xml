@@ -18,6 +18,11 @@
 		<managed-bean-class>project.util.FileUploadController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>marksBean</managed-bean-name>
+		<managed-bean-class>project.beans.MarksBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<!-- <managed-bean>
 		<managed-bean-name>contentController</managed-bean-name>
 		<managed-bean-class>project.util.ContentController</managed-bean-class>

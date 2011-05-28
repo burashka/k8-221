@@ -13,8 +13,11 @@
 			<p:panel>
    					 
 			    <p:commandButton value="Подписать" update="contenArea"
-			    action="#{contentController.changePage('/ui/main.xhtml')}"
+			    action="#{contentController.changePage('/ui/uploadkeyfile.xhtml')}"
 			    oncomplete="updateCenter()"/>
+			    <p:commandButton value="Отмена" update="@none"
+	        		action="#{contentController.changePage('/ui/main.xhtml')}"
+	        		oncomplete="updateCenter()"/>
 				<p:remoteCommand name="updateCenter" process="@none"
 					update="contentArea" />
 			</p:panel>
