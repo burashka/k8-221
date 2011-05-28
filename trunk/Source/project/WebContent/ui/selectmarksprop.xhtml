@@ -15,13 +15,13 @@
 			<p:messages></p:messages>
 			    <!--  <p:panel header="Выбор параметров" toggleable="true"> -->  
         		<h:panelGrid columns="2" cellpadding="5"> 
-        		<h:selectOneListbox value="#{marksBean.selectedSubject}"  
+        		<h:selectOneListbox value="#{marksBean.selectedSubject}" converter="heroConverter" 
 		            style="height:30px">  
 		            <f:selectItems value="#{marksBean.subjects}"  
 		                var="subject" itemLabel="#{subject.name}" itemValue="#{subject}" />  
 		        </h:selectOneListbox>  
         		</h:panelGrid>
-	        		<p:commandButton value="Далее" update="@none"
+        			<p:commandButton value="Далее" update="@none" 
 	        		action="#{contentController.changePage('/ui/putmarkspage.xhtml')}"
 	        		oncomplete="updateCenter()"/>
 	        		<p:commandButton value="Отмена" update="@none"

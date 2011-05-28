@@ -16,6 +16,9 @@
 					<p:fileUpload
 						fileUploadListener="#{fileUploadController.handleFileUpload}"
 						allowTypes="*.prj" description="ProjectEKeys" />
+					<p:commandButton value="Отмена" update="@none"
+	        		action="#{contentController.changePage('/ui/main.xhtml')}"
+	        		oncomplete="updateCenter()"/>
 
 				</h:panelGrid>
 				<p:remoteCommand name="updateCenter" process="@none"
