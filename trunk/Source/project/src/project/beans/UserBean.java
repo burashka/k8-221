@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import project.dao.UserDAO;
+import project.dao.authorization.UserDAO;
 import project.util.BeanManager;
 
 @ManagedBean
